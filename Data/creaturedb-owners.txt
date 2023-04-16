@@ -1,0 +1,50 @@
+OWNERS - Creature DB (12)
+
+("chart10", "5465650", "Christian", "Hart", "christiantaylorhart@gmail.com", "17065554792", "706 Moreland Ave Atlanta GA")
+Pets: Ripley
+
+
+("ssbsk", "dugan", "Chandler", "Dugan", "cdugan@gmail.com", "14045557878", "1329 Grandslam Drive Atlanta GA")
+Pets: 
+
+
+("suavearabic", "rivas", "Eric", "Rivas", "erivas@gmail.com", "14045552222", "454 Cinder Ave Atlanta GA")
+Pets: 
+
+
+("briar", "kouttu", "Jamie", "Kouttu", "jkouttu@gmail.com", "17065553333", "1138 West Virginia Ave Atlanta GA")
+Pets: 
+
+
+("hsimpson", "12345", "Homer", "Simpson", "maxpower@gmail.com", "17065554444", "746 Evergreen Terrace Springfield GA")
+Pets: 
+
+
+("nflanders", "12345", "Ned", "Flanders", "bibleman@gmail.com", "17065555555", "744 Evergreen Terrace Springfield GA")
+Pets: 
+
+
+("ekrabappel", "12345", "Edna", "Krabappel", "krabappel@gmail.com", "17065556666", "879 Downturn Alley Springfield GA")
+Pets: 
+
+
+("skinner", "12345", "Seymour", "Skinner", "vietnamvet@gmail.com", "17065557777", "3434 Granite Road Springfield GA")
+Pets: 
+
+
+("deliveryman", "12345", "Philip", "Fry", "deliveryman@gmail.com", "17065558888", "6666 Poplar Street Apt 101 Shelbyville GA")
+Pets: 
+
+
+("imthegreatest", "12345", "Bender", "Rodrigues", "shinymetal@gmail.com", "17065559999", "4321 Robot Circle Shelbyville GA")
+Pets: 
+
+
+("burnsboy", "12345", "Waylon", "Smithers", "smithers@gmail.com", "17065551010", "301 Dragon Alley Springfield GA")
+Pets: 
+
+
+("donutguy", "12345", "Ralph", "Wiggam", "policechief@gmail.com", "17065551111", "543 Crabtree Cove Springfield GA")
+Pets: 
+
+

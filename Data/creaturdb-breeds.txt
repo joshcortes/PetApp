@@ -1,0 +1,63 @@
+BREEDS - Creature DB
+
+"DOGS", : 
+
+"DOG", "Cocker Spaniel"
+
+"DOG", "English Bulldog"
+
+"DOG", "French Bulldog"
+
+"DOG", "Boston Terrier"
+
+"DOG", "Beagle"
+
+"DOG", "Bloodhound"
+
+"DOG", "Bull Terrier"
+
+"DOG", "Shih Tzu"
+
+"DOG", "Pug"
+
+"DOG", "Akita"
+
+"DOG", "Basset Hound"
+
+"DOG", "Dalmatian"
+
+"DOG", "Doberman Pinscher"
+
+"DOG", "German Shepherd"
+
+"DOG", "Golden Retriever"
+
+"DOG", "Irish Setter"
+
+"DOG", "Great Dane"
+
+"DOG", "Great Pyrenees"
+
+"DOG", "Labrador Retriever"
+
+"DOG", "Poodle"
+
+"DOG", "Rottweiler"
+
+"DOG", "Share Pei"
+
+"DOG", "Saint Bernard"
+
+"DOG", "Siberian Husky"
+
+"DOG", "Weimaraner"
+
+"DOG", "Greyhound"
+
+CATS:
+
+"CAT", "Shorthair"
+
+"CAT", "Maine Coon"
+
+"CAT", "Siamese"

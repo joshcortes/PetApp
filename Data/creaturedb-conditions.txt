@@ -1,0 +1,451 @@
+CONDITIONS - Creature DB (50-100)
+
+CreatureDB username: admin
+CreatureDB password: databasesystems4710
+
+"Anal Sac Disease", "Build up of fluid in a dog's anal gland that could result in an abscess if untreated"
+Duration: recurring
+Symptoms: scooting, licking, biting, bad smell, constipation, difficulty sitting
+Treatment: dog antibiotics, anal gland expression
+
+"Arthritis", "inflammation and degeneration of one or more joints"
+Duration: life long
+Treatment: surgery, weight management, anti-inflammatory medication, physical therapy
+Affects: larger dogs
+Symptoms: difficulty sitting, difficulty standing, trouble moving, avoiding touch
+
+"Urinary Stones", "mineral build up in the kidneys or bladder forming clumps that pass through the urinary tract", "2-12 weeks"
+Duration: "2-12 weeks"
+Treatment: surgery, medication, diet change
+Symptoms: frequent urination, straining while urinating, avoiding touch, blood in urine
+
+"Constipation", "infrequent or difficult passage of stool or feces and is typically a temporary condition, prolonged constipation often indicates another underlying health issue", "2-3 days, but can last longer"
+Symptoms: unsuccessful bowel movements, scooting, weight loss
+Treatment: enema, laxative, manual fecal removal
+
+"Cushing's Disease", "adrenal glands overproduce cortisol (cortisone) in the animal's body", "Life long"
+Treatment: medication, surgery
+Symptoms: increased thirst, increased appetite, hair loss, pot belly, frequent urination, lethargy
+
+"Canine Influenza Virus", "contagious respiratory disease in dogs caused by specific Type A influenza viruses", "2-3 weeks"
+Duration: 2-3 weeks
+Treatment: rest, quarantine from other animals
+Symptoms: runny nose, coughing, sneezing, lethargy, loss of appetite, fever, eye discharge
+
+"Cherry Eye", "inflammation of the lower eyelid causing a prolapse of the gland typically caused by conjunctivitis", "2 weeks with proper treatment"
+Affects: Cocker Spaniel, English Bulldog, French Bulldog, Boston Terrier, Beagle, Bloodhound, Shih Tzu, Pug
+Symptoms: Swollen mass under the eye
+Treatment: surgery
+
+"Fatty Tumor", "Growth on the surface of the skin that is common in larger breeds typically benign", "Indefinite, recurring"
+Duration: indefinite
+Symptom: lump on the skin
+Treatment: observation, surgery
+Affects: Larger Dogs, Older dogs
+
+"Deafness", "loss of the ability to hear"
+Duration: life long
+Symptoms: no reaction to loud noise
+Treatment: none
+
+"Depression", "psychological condition resulting in lack of interest or engagement in things the pet previously enjoyed", "A few days to a few months with proper treatment"
+Duration: a few weeks with proper treatment
+Treatment: increase attention and affection, exercise, medication
+Symptoms: Loss of appetite, lethargy, withdrawn
+
+"Diabetes Mellitus", "Sugar Diabetes, metabolic disorder resulting in an insulin deficiency or resistance", "Life long"
+Symptoms: excessive thirst, increased appetite, frequent urination, weight loss
+Treatment: insulin injections, diet change, exercise
+
+"Diarrhea", "unformed or loose stools, usually occurring in larger amounts and/or more often than usual, prolonged diarrhea often indicates another underlying health issue", "2-4 days, but can last longer"
+Duration: 2-4 days
+Symptoms: loose stool, dehydration
+Treatment: probiotics, diet change, dewormer
+
+"Distemper", "Canine distemper is a highly contagious virus caused by the paramyxovirus, "Up to 2 months"
+Duration: "Up to 2 months"
+Symptoms: fever, runny nose, eye discharge, lethargy, sneezing, coughing, vomiting, loss of appetite
+Treatment: quarantine from other animals, pain reliever, antibiotics, seizure medication, hospitalization
+
+"Dry Eye", "a failure to make enough tears", "12 weeks, recurring"
+Duration: life long
+Affects: Cocker Spaniel, Bloodhound, Boston Terrier, English Bulldog, Pug, Shih Tzu
+Symptoms: mucus in the eye, eye inflammation
+Treatment: eye medication
+
+"Ear Hematoma", "An aural hematoma is a collection of blood, either fresh or clotted, within the ear flap", "7-10 days"
+Duration:
+Symptoms: Swelling of the ear
+Treatment: surgery, oral steroids
+
+"Ear Infection", "bacterial or fungal infection of the ear canal", "1-2 weeks"
+Duration: "1-2 weeks"
+Symptoms: ear inflammation, ear discharge, scratching of the ear, bad smell
+Treatment: ear drops, ear flushing
+
+"Ear Mites", "highly contagious mite usually found in the ear canal but it can also live on the skin surface", "3-6 weeks"
+Symptoms: ear inflammation, ear discharge, scratching of the ear, bad smell
+Treatment: topical medication
+
+"Ehrlichiosis", "a tick-borne infectious disease of dogs, usually carried by the brown dog tick", "3-6 months"
+Symptoms: fever, swollen lymph nodes, trouble breathing, weight loss, spontaneous bleeding
+Treatment: antibiotics
+
+"Enteritis", "inflammation of the small intestines caused by a wide range of potential problems", "3-6 days"
+Symptoms: vomiting, fever, black tarry stool, weight loss, avoiding touch
+Treatment: hospitalization, medication
+
+"Entropion", "abnormality of the eyelids in which the eyelid rolls inward causing hair on the surface of the eyelid to rub against the cornea resulting in pain, corneal ulcers, perforations, or pigment developing on the cornea which can interfere with vision", "2-4 weeks"
+Affects: Akita, Basset Hound, Bloodhound, Bulldog, Dalmatian, Cocker Spaniel, Golden Retriever, Great Dane, Great Pyrenees, Irish Setter, Labrador Retriever, Pug, Rottweiler, Shar Pei, Shih Tzu, Saint Bernard, Siberian Husky, Weimaraner
+Symptoms: squinting, eye discharge
+Treatment: surgery
+
+"Fleas", "parasites that live and breed under a pet's fur on the skin", "1-2 weeks with proper treatment"
+Duration: indefinite without treatment
+Symptoms: hair loss, skin irritation, pale gums, flecks in fur, bugs in fur
+Treatment: medication, prevention collar
+Folliculitis
+
+"Frostbite", "damage caused to skin and other tissues due to extreme cold", "1-2 weeks"
+Symptoms: skin discoloration, avoiding touch, swollen skin, blackened or dead skin
+Treatment: hospitalization, pain reliever, antibiotics
+
+"Gastritis", "an inflammation of the lining of the stomach", "less than 24 hours"
+Symptoms: vomiting, decreased appetite, lethargy, depression, increased thirst
+Treatment: anti-vomiting medication
+
+"Glaucoma", "a disease of the eye in which the pressure within the eye, called the intraocular pressure is increased", "Life long"
+Affects: Akita, Dalmatian, Cocker Spaniel, Poodle, Basset Hound, Shar Pei, Beagle, Shih Tzu, Boston Terrier, Great Dane, Siberian Husky, Greyhound
+Symptoms: eye discharge, lethargy, eye bulging or swelling, eye becoming cloudy or bluish
+Treatment: analgesics, surgery, 
+
+"Heartworm Disease", "a serious and potentially fatal disease caused by a blood-borne parasite known as Dirofilaria immitis spread by mosquitoes", "Life long"
+Symptoms: coughing, lethargy, decreased appetite, weight loss, pot belly
+Treatment: medication
+
+"Heat Stroke", "hyperthermia or elevated body temperature", "Less than an hour if treated quickly"
+Symptoms: elevated breathing rate, dry or sticky gums, gum discoloration, lethargic, seizures
+Treatment: hospitalization, cool water applied to the head/stomach/armpits/feet 
+
+"Canine Herpesvirus", "Canine herpesvirus or canine herpes is a systemic, often fatal disease of puppies caused by the canine herpes virus", "Life long"
+Affects: newborn puppies
+Symptoms: difficulty breathing, nasal discharge, decreased appetite, seizures
+Treatment: antiviral drug therapy
+
+"Hip Dysplasia", "a genetic deformity of the hip that occurs during growth", "Life long"
+Affects: German Shepherds, Saint Bernards, Labrador Retrievers, Golden Retrievers, Bulldog
+Symptoms: weakness and pain in hind legs, difficulty sitting
+Treatment: dietary supplements, exercise, physical therapy
+
+"Histoplasmosis", "a chronic, non-contagious fungal infection caused by the soil-dwelling fungus Histoplasma capsulatum", "6 months or more"
+Symptoms: fever, depression, weight loss, and loss of appetite
+
+"Hookworm Infestation", "intestinal parasites of the cat and dog that ingest large amounts of blood from the tiny blood vessels in the intestinal wall", "2-4 weeks"
+Symptoms: pale gums, blood in stool, weight loss, dull or dry coat
+
+"Hot Spots, pyotraumatic dermatitis or acute moist dermatitis, are red, inflamed skin lesions that appear quickly, ooze, and may contain pus", "A few days to a few weeks"
+Symptoms: biting, licking, scratching, legions on the skin
+Treatment: Elizabethan collar, topical steroids, bandage
+
+"Hypothyroidism, usually caused by one of two diseases: lymphocytic thyroiditis or idiopathic thyroid gland atrophy where the immune system decides that the thyroid is abnormal or foreign and attacks it", "A few weeks to several months"
+Duration: life long
+Symptoms: weight gain, lethargy, cold intolerance, dull or dry coat, thinning fur, frequent skin infections, frequent ear infections
+Treatment: thyroid replacement hormone medication, Thyro-Tabs® Canine, Synthroid®
+
+"Incontinence (Urinary)", "loss of voluntary control of urination", "Life long"
+Symptoms: frequent urination, urinating indoors
+Treatment: medication, phenylpropanolamine, imipramine
+
+"Inflammatory Bowel Disease", "a specific reaction to chronic irritation of the intestinal tract resulting in the lining of the intestines being invaded by inflammatory cells", , "Life long"
+Treatment: diet change, medication, metronidazole, Immunosuppressive medications
+Symptoms: chronic vomiting, chronic diarrhea  
+
+"Kennel Cough", "highly contagious airborne respiratory disease", "2-3 weeks"
+Treatment: rest, quarantine from other animals
+Duration: 2-3 weeks
+Symptoms: runny nose, coughing, sneezing, lethargy, vomiting, loss of appetite, fever
+Affects: young dogs, immunocompromised dogs
+
+"Laryngeal Paralysis", "When the nerves of the laryngeal muscles become weak (paretic) or paralyzed, the muscles relax, and the cartilages tend to collapse inwards, resulting in laryngeal paralysis", "Life long"
+Affects: Labrador Retriever, Siberian Husky, Bull Terriers, Dalmatians
+Symptoms: Coughing, noisy breathing, excessive panting, change in bark sound
+Treatment: anti-inflammatory medication
+
+"Chronic Lymphocytic Leukemia", "slow-progressing, uncommon cancer of lymphocytes (a type of white blood cell) originating in the bone marrow or the spleen", "Life long"
+Affects: German Shepherd, Golden Retriever
+Duration: life long
+Symptoms: lethargy, decreased appetite, weight loss, fever, increased thirst, frequent urination
+Treatment: immunosuppressive medication, chlorambucil
+
+"Lick Granuloma", "also known as acral lick dermatitis, occurs when a dog obsessively licks at an area, often on a lower limb, most commonly the wrist or carpal joint of the front limb", "6-8 weeks"
+Duration: indefinite
+Affects: Doberman Pinschers, Great Danes, Labrador Retriever, Weimaraner, Golden Retriever
+Symptoms: licking, biting, legions on skin, anxiety
+Treatment: topical medication, Elizabethan collar, bandages
+
+"Lipoma", "a very common benign tumor of fat seen in middle-aged to older animals that become problematic for your pet when they grow in locations that impact their ability to walk or cause discomfort", "Life long"
+Symptoms: lump under the skin
+Treatment: surgery
+
+"Lyme Disease", "transmitted to dogs through the bite of an infected tick", "3 days when treated quickly"
+Symptoms: fever, trouble walking, vomiting, lethargy, decreased appetite
+Treatment: antibiotics
+
+"Lymphoma", "cancer of the lymph nodes and lymphatic system. This cancer may be localized to one region or spread throughout the entire body", "Life long"
+Affects: 
+	Basset Hound,
+	Bull Terriers,
+	Golden Retriever,
+    	English Bulldog,
+    	German Shepherd,
+    	Beagle,
+    	Rottweiler,
+    	Saint Bernard,
+    	Poodle
+Symptoms: swelling of the lymph nodes
+Treatment: chemotherapy, prednisone
+
+"Mange", "contagious skin disorder cause by tiny parasite on the skin called mites", "1 month"
+Symptoms: biting, scratching, licking, bald patches, scabs
+Treatment: topical medication, quarantine from other animals
+
+"Mast Cell Tumors", "Mast cell tumors most commonly form nodules or masses in the skin, they can also affect other areas of the body, including the spleen, liver, intestine, and bone marrow", "Life long"
+Symptoms: lump under the skin
+Treatment: surgery, chemotherapy
+
+"Megaesophagus", "(Enlarged Esophagus) a combination disorder in which the esophagus  dilates and loses motility causing food and liquid to accumulate in the esophagus and have difficulty getting into the stomach", "Life long"
+Duration: life long
+Affects: 
+    German Shepherd
+    Great Dane
+    Irish Setter
+    Shar Pei
+    Greyhound
+    Labrador Retriever
+Symptoms: trouble eating, bad breath, fever, lethargy, weight loss
+Treatment: soft food diet, diet change, Bailey chair
+
+"Motion Sickness", "dogs become anxious or even nauseous during travel due to a lack of conditioning and the overwhelming unusual stimuli associated with moving inside a vehicle", "A few hours"
+Duration: a few hours
+Symptoms: whining, pacing, excessive drooling, lethargy, vomiting, diarrhea
+Treatment: desensitize pet to car travel
+
+"Obesity", "an accumulation of excess body fat", "Several months to several years with proper treatment"
+Symptoms: weight gain, lethargy
+Treatment: diet change, exercise, dietary supplements
+
+
+"Polycystic Kidney Disease", "hereditary kidney disease that is common in cats, but uncommon in dogs, affected dogs begin to develop multiple small cysts within both kidneys early in life", "Life long"
+Duration: life long
+Symptoms: frequent urination, decreased appetite, weight loss
+Treatment: diet change, dietary supplements, medication
+
+"Rabies", "a fatal disease caused by infection with the rabies virus", "Life long"
+Symptoms: temperament change, aggression
+Treatment: none
+
+"Rocky Mountain Spotted Fever", "a disease caused by an infectious bacterium called Rickettsia rickettsii from tick bites, which can only survive within its host’s cells", "1-2 days with proper treatment"
+Symptoms: decreased appetite, fever, coughing, vomiting, diarrhea, depression
+Treatment: antibiotics
+
+"Yeast Dermatitis", "caused by the fungus Malassezia pachydermatis. It is an extremely common cause of skin disease in dogs, not contagious", "4-12 weeks"
+Symptoms: scratching, bad smell, thick or scaly skin, frequent ear infections, hyperpigmentation 
+Treatment: topical medication, oral medication
+
+
+SQL: 
+("Arthritis", "inflammation and degeneration of one or more joints", "Life long"),
+("Urinary Stones", "mineral build up in the kidneys or bladder forming clumps that pass through the urinary tract", "2-12 weeks"),
+("Constipation", "infrequent or difficult passage of stool or feces and is typically a temporary condition, prolonged constipation often indicates another underlying health issue", "2-3 days, but can last longer"),
+("Cushing's Disease", "adrenal glands overproduce cortisol (cortisone) in the animal's body", "Life long"),
+("Canine Influenza Virus", "contagious respiratory disease in dogs caused by specific Type A influenza viruses", "2-3 weeks"),
+("Cherry Eye", "inflammation of the lower eyelid causing a prolapse of the gland typically caused by conjunctivitis", "2 weeks with proper treatment"),
+("Fatty Tumor", "Growth on the surface of the skin that is common in larger breeds typically benign", "Indefinite, recurring"),
+("Deafness", "loss of the ability to hear", "Life long"),
+("Depression", "psychological condition resulting in lack of interest or engagement in things the pet previously enjoyed", "A few days to a few months with proper treatment"),
+("Diabetes Mellitus", "Sugar Diabetes, metabolic disorder resulting in an insulin deficiency or resistance", "Life long"),
+("Diarrhea", "unformed or loose stools, usually occurring in larger amounts and/or more often than usual, prolonged diarrhea often indicates another underlying health issue", "2-4 days, but can last longer"),
+("Distemper", "Canine distemper is a highly contagious virus caused by the paramyxovirus", "Up to 2 months"),
+("Dry Eye", "a failure to produce enough tears", "12 weeks, recurring"),
+("Ear Hematoma", "An aural hematoma is a collection of blood, either fresh or clotted, within the ear flap", "7-10 days"),
+("Ear Infection", "bacterial or fungal infection of the ear canal", "1-2 weeks"),
+("Ear Mites", "highly contagious mite usually found in the ear canal but it can also live on the skin surface", "3-6 weeks"),
+("Ehrlichiosis", "a tick-borne infectious disease of dogs, usually carried by the brown dog tick", "3-6 months"),
+("Enteritis", "inflammation of the small intestines caused by a wide range of potential problems", "3-6 days"),
+("Entropion", "abnormality of the eyelids in which the eyelid rolls inward causing hair on the surface of the eyelid to rub against the cornea resulting in pain, corneal ulcers, perforations, or pigment developing on the cornea which can interfere with vision", "2-4 weeks"),
+("Fleas", "parasites that live and breed under a pet's fur on the skin", "1-2 weeks with proper treatment"),
+("Frostbite", "damage caused to skin and other tissues due to extreme cold", "1-2 weeks"),
+("Gastritis", "an inflammation of the lining of the stomach", "less than 24 hours"),
+("Glaucoma", "a disease of the eye in which the pressure within the eye, called the intraocular pressure is increased", "Life long"),
+("Heartworm Disease", "a serious and potentially fatal disease caused by a blood-borne parasite known as Dirofilaria immitis spread by mosquitoes", "Life long"),
+("Heat Stroke", "hyperthermia or elevated body temperature", "Less than an hour if treated quickly"),
+("Canine Herpesvirus", "Canine herpesvirus or canine herpes is a systemic, often fatal disease of puppies caused by the canine herpes virus", "Life long"),
+("Hip Dysplasia", "a genetic deformity of the hip that occurs during growth", "Life long"),
+("Histoplasmosis", "a chronic, non-contagious fungal infection caused by the soil-dwelling fungus Histoplasma capsulatum", "6 months or more"),
+("Hookworm Infestation", "intestinal parasites of the cat and dog that ingest large amounts of blood from the tiny blood vessels in the intestinal wall", "2-4 weeks"),
+("Hot Spots", "pyotraumatic dermatitis or acute moist dermatitis, are red, inflamed skin lesions that appear quickly, ooze, and may contain pus", "A few days to a few weeks"),
+("Hypothyroidism", "usually caused by one of two diseases: lymphocytic thyroiditis or idiopathic thyroid gland atrophy where the immune system decides that the thyroid is abnormal or foreign and attacks it", "A few weeks to several months"),
+("Incontinence (Urinary)", "loss of voluntary control of urination", "Life long"),
+("Inflammatory Bowel Disease", "a specific reaction to chronic irritation of the intestinal tract resulting in the lining of the intestines being invaded by inflammatory cells", "Life long"),
+("Kennel Cough", "highly contagious airborne respiratory disease", "2-3 weeks"),
+("Laryngeal Paralysis", "When the nerves of the laryngeal muscles become weak (paretic) or paralyzed, the muscles relax, and the cartilages tend to collapse inwards, resulting in laryngeal paralysis", "Life long"),
+("Chronic Lymphocytic Leukemia", "slow-progressing, uncommon cancer of lymphocytes (a type of white blood cell) originating in the bone marrow or the spleen", "Life long"),
+("Lick Granuloma", "also known as acral lick dermatitis, occurs when a dog obsessively licks at an area, often on a lower limb, most commonly the wrist or carpal joint of the front limb", "6-8 weeks"),
+("Lipoma", "a very common benign tumor of fat seen in middle-aged to older animals that become problematic for your pet when they grow in locations that impact their ability to walk or cause discomfort", "Life long"),
+("Lyme Disease", "transmitted to dogs through the bite of an infected tick", "3 days when treated quickly"),
+("Lymphoma", "cancer of the lymph nodes and lymphatic system. This cancer may be localized to one region or spread throughout the entire body", "Life long"),
+("Mange", "contagious skin disorder cause by tiny parasite on the skin called mites", "1 month"),
+("Mast Cell Tumors", "Mast cell tumors most commonly form nodules or masses in the skin, they can also affect other areas of the body, including the spleen, liver, intestine, and bone marrow", "Life long"),
+("Megaesophagus", "(Enlarged Esophagus) a combination disorder in which the esophagus  dilates and loses motility causing food and liquid to accumulate in the esophagus and have difficulty getting into the stomach", "Life long"),
+("Motion Sickness", "dogs become anxious or even nauseous during travel due to a lack of conditioning and the overwhelming unusual stimuli associated with moving inside a vehicle", "A few hours"),
+("Obesity", "an accumulation of excess body fat", "Several months to several years with proper treatment"),
+("Polycystic Kidney Disease", "hereditary kidney disease that is common in cats, but uncommon in dogs, affected dogs begin to develop multiple small cysts within both kidneys early in life", "Life long"),
+("Rabies", "a fatal disease caused by infection with the rabies virus", "Life long"),
+("Rocky Mountain Spotted Fever", "a disease caused by an infectious bacterium called Rickettsia rickettsii from tick bites, which can only survive within its host’s cells", "1-2 days with proper treatment"),
+("Yeast Dermatitis", "caused by the fungus Malassezia pachydermatis. It is an extremely common cause of skin disease in dogs, not contagious", "4-12 weeks")
+;
+
+scooting, licking, biting, bad smell, constipation, difficulty sitting
+
+'5000','Arthritis'
+difficulty sitting, difficulty standing, trouble moving, avoiding touch
+surgery, weight management, anti-inflammatory medication, physical therapy
+
+'5001','Urinary Stones'
+frequent urination, straining while urinating, avoiding touch, blood in urine
+surgery, medication, diet change
+
+'5002','Constipation'
+unsuccessful bowel movements, scooting, weight loss
+enema, laxative, manual fecal removal
+
+'5003','Cushing\'s Disease'
+increased thirst, increased appetite, hair loss, pot belly, frequent urination, lethargy
+medication, surgery
+
+'5004','Canine Influenza Virus'
+runny nose, coughing, sneezing, lethargy, loss of appetite, fever, eye discharge
+rest, quarantine from other animals
+
+'5005','Cherry Eye'
+Swollen mass under the eye
+surgery
+
+'5006','Fatty Tumor'
+Symptom: lump on the skin
+Treatment: observation, surgery
+
+'5007','Deafness'
+Symptoms: no reaction to loud noise
+Treatment: none
+
+'5008','Depression'
+Symptoms: Loss of appetite, lethargy, withdrawn
+Treatment: increase attention and affection, exercise, medication
+
+'5009','Diabetes Mellitus'
+Symptoms: excessive thirst, increased appetite, frequent urination, weight loss
+Treatment: insulin injections, diet change, exercise
+
+'5010','Diarrhea'
+Symptoms: loose stool, dehydration
+Treatment: probiotics, diet change, dewormer
+
+'5011','Distemper'
+Symptoms: fever, runny nose, eye discharge, lethargy, sneezing, coughing, vomiting, loss of appetite
+Treatment: quarantine from other animals, pain reliever, antibiotics, seizure medication, hospitalization
+
+'5012','Dry Eye'
+Symptoms: mucus in the eye, eye inflammation
+Treatment: eye medication
+
+'5013','Ear Hematoma'
+Symptoms: Swelling of the ear
+Treatment: surgery, oral steroids
+
+'5014','Ear Infection'
+Symptoms: ear inflammation, ear discharge, scratching of the ear, bad smell
+Treatment: ear drops, ear flushing
+
+'5015','Ear Mites'
+Symptoms: ear inflammation, ear discharge, scratching of the ear, bad smell
+Treatment: topical medication
+
+'5016','Ehrlichiosis'
+Symptoms: fever, swollen lymph nodes, trouble breathing, weight loss, spontaneous bleeding
+Treatment: antibiotics
+
+'5017','Enteritis'
+Symptoms: vomiting, fever, black tarry stool, weight loss, avoiding touch
+Treatment: hospitalization, medication
+
+'5018','Entropion'
+Symptoms: squinting, eye discharge
+Treatment: surgery
+
+'5019','Fleas'
+Symptoms: hair loss, skin irritation, pale gums, flecks in fur, bugs in fur
+Treatment: medication, prevention collar
+
+'5020','Frostbite'
+
+'5021','Gastritis'
+
+'5022','Glaucoma'
+
+'5023','Heartworm Disease'
+
+'5024','Heat Stroke'
+
+'5025','Canine Herpesvirus'
+
+'5026','Hip Dysplasia'
+
+'5027','Histoplasmosis'
+
+'5028','Hookworm Infestation'
+'5029','Hot Spots'
+
+'5030','Hypothyroidism'
+
+'5031','Incontinence (Urinary)'
+
+'5032','Inflammatory Bowel Disease'
+
+'5033','Kennel Cough'
+
+'5034','Laryngeal Paralysis'
+
+'5035','Chronic Lymphocytic Leukemia'
+
+'5036','Lick Granuloma'
+
+'5037','Lipoma'
+
+'5038','Lyme Disease'
+
+'5039','Lymphoma'
+
+'5040','Mange'
+
+'5041','Mast Cell Tumors'
+
+'5042','Megaesophagus'
+
+'5043','Motion Sickness'
+
+'5044','Obesity'
+
+'5045','Polycystic Kidney Disease'
+
+'5046','Rabies'
+
+'5047','Rocky Mountain Spotted Fever'
+
+'5048','Yeast Dermatitis'
+
+5049, anal sac
+scooting, licking, biting, bad smell, constipation, difficulty sitting
+dog antibiotics, anal gland expression
+
+

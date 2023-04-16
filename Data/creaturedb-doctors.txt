@@ -1,0 +1,24 @@
+DOCTORS - Creature DB (4)
+
+("wern67", "12345", "Ogden", "Wernstrom", "wernstrom@petplace.com", "14045551111", "1225 Jericho Lane Springfield GA", 45454545)
+Patients:
+Username: "wern67"
+Password: "12345"
+
+
+("docfarnworth", "password", "Hubert", "Farnsworth", "farnsworth@petplace.com", "14045551212", "134 Howard Hill Springfield GA", 25252525)
+Patients:
+Username: "docfarnworth"
+Password: "password"
+
+
+
+("drnick", "hieverybody", "Nick", "Riviera", "drnick@petplace.com", "17705553434", "225 Lea Court Springfield GA", 15151515)
+Patients:
+Username: "drnick"
+Password: "hieverybody"
+
+("terrorsweats", "05251967", "Julius", "Hibbert", "hibbert@petplace.com", "14045552323", "1921 Central Road Springfield GA", 35353535)
+Patients:
+Username: "terrorsweats"
+Password: "05251967"

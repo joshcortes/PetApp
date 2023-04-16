@@ -1,0 +1,88 @@
+TREATMENTS - Creature DB
+
+Anal Gland Expression
+
+Antibiotics 
+
+Surgery
+
+Weight management
+
+Anti-inflammatory medication
+
+Physical therapy
+
+Medication
+
+Enema
+
+Laxative
+
+Manual fecal removal
+
+Rest
+
+Quarantine from other animals
+
+Observation
+
+Increased attention and affection
+
+Exercise
+
+Insulin injections
+
+Diet change
+
+Probiotics
+
+Dewormer
+
+Pain reliever
+
+Seizure medication
+
+Hospitalization
+
+Eye medication
+
+Oral steroids
+
+Ear drops
+
+Ear flushing
+
+Topical medication
+
+Flea prevention collar
+
+Anti-vomiting medication
+
+Analgesics 
+
+Cool water applied to the head/stomach/armpits/feet
+
+Antiviral drug therapy
+
+Dietary supplements
+
+Elizabethan collar
+
+Topical steroids
+
+Bandages
+
+Thyroid replacement hormone medication
+
+Immunosuppressive medications
+
+Chemotherapy
+
+Prednisone
+
+Soft food diet
+
+Bailey chair
+
+Desensitize pet to car travel
+

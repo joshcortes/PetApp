@@ -1,0 +1,184 @@
+DATABASE SCHEMA - Creature DB
+
+
+Use CreatureDB;
+
+CREATE TABLE Owners(
+    owner_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,    
+    username varchar(30) UNIQUE,
+    password varchar(30),
+    first_name VARCHAR(20) NOT NULL,
+    last_name VARCHAR(20) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone_number CHAR(11) NOT NULL,
+    address varchar(60)
+);
+
+CREATE TABLE Doctors(
+    doctor_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    username varchar(30) UNIQUE,
+    password varchar(30),
+    first_name varchar(20) NOT NULL,
+    last_name varchar(20) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone_number char(11) NOT NULL,
+    address varchar(60),
+    license_number int NOT NULL UNIQUE
+);
+
+CREATE TABLE Breeds_species(
+    breed_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    species enum("CAT", "DOG"),
+    name varchar(30)
+);
+
+CREATE TABLE Pets(
+	pet_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+	name VARCHAR(30),
+	age int NOT NULL,
+	sex enum("MALE", "FEMALE"),
+	insurance varchar(20),
+	breed_id INT,
+	FOREIGN KEY(breed_id) REFERENCES Breeds_species(breed_id) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE TABLE Pet_Doctor(
+doctor_id INT NOT NULL, 
+pet_id INT NOT NULL,
+PRIMARY KEY(doctor_id, pet_id),
+FOREIGN KEY(doctor_id) REFERENCES Doctors(doctor_id) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY(pet_id) REFERENCES Pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Pet_Owner(
+owner_id INT NOT NULL, 
+pet_id INT NOT NULL,
+PRIMARY KEY(owner_id, pet_id),
+FOREIGN KEY(owner_id) REFERENCES Owners(owner_id) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY(pet_id) REFERENCES Pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Conditions(
+    condition_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    name varchar(30) NOT NULL,
+    duration varchar(20),
+    description varchar(250)
+);
+
+CREATE TABLE Symptoms(
+    symptom_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    name varchar(20) NOT NULL,
+    affected_part VARCHAR(20),
+    type varchar(20) NOT NULL,
+    description varchar(250)
+);
+
+CREATE TABLE Treatments(
+    treatment_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    name varchar(20) NOT NULL,
+    type varchar(20) NOT NULL,
+    description varchar(250)
+);
+
+CREATE TABLE Products(
+    product_id int PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    name varchar(20) NOT NULL,
+    type varchar(20) NOT NULL,
+    description varchar(250)
+);
+
+CREATE TABLE Locations(
+    loc_id int primary key auto_increment unique, 
+    address varchar(60) NOT NULL, 
+    name varchar(30) NOT NULL
+);
+
+CREATE TABLE Product_Location(
+    loc_id int not null, 
+    product_id int not null,
+    primary key(loc_id, product_id),
+    foreign key(loc_id) references Locations(loc_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    foreign key(product_id) references Products(product_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Pet_Condition(
+    pet_id int not null, 
+    condition_id int not null, 
+    startDate DATE not null, 
+    endDate DATE,
+    severity enum("MILD", "MODERATE", "SEVERE", "N/A"),
+    PRIMARY KEY(pet_id, condition_id),
+    FOREIGN KEY(pet_id) REFERENCES Pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(condition_id) REFERENCES Conditions(condition_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Pet_Symptom(
+    pet_id int not null, 
+    symptom_id int not null, 
+    startDate DATE not null, 
+    endDate DATE,
+    severity enum("MILD", "MODERATE", "SEVERE", "N/A"),
+    PRIMARY KEY(pet_id, symptom_id),
+    FOREIGN KEY(pet_id) REFERENCES Pets(pet_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(symptom_id) REFERENCES Symptoms(symptom_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Condition_Treatment(
+    condition_id int not null, 
+    treatment_id int not null,
+    PRIMARY KEY(condition_id, treatment_id),
+    FOREIGN KEY(condition_id) REFERENCES Conditions(condition_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(treatment_id) REFERENCES Treatments(treatment_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Symptom_Treatment(
+    symptom_id int not null, 
+    treatment_id int not null,
+    PRIMARY KEY(symptom_id, treatment_id),
+    FOREIGN KEY(symptom_id) REFERENCES Symptoms(symptom_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(treatment_id) REFERENCES Treatments(treatment_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Susceptible_To(
+    breed_id int not null,
+    condition_id int not null,
+    PRIMARY KEY(breed_id, condition_id),
+    FOREIGN KEY(breed_id) REFERENCES Breeds_species(breed_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(condition_id) REFERENCES Conditions(condition_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Treatment_Product(
+    treatment_id int not null, 
+    product_id int not null,
+    PRIMARY KEY(treatment_id, product_id),
+    FOREIGN KEY(treatment_id) REFERENCES Treatments(treatment_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(product_id) REFERENCES Products(product_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Symptom_Indicates_Condition(
+    condition_id int not null, 
+    symptom_id int not null,
+    PRIMARY KEY(condition_id, symptom_id),
+    FOREIGN KEY(condition_id) REFERENCES Conditions(condition_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(symptom_id) REFERENCES Symptoms(symptom_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+ALTER TABLE Owners AUTO_INCREMENT = 1000;
+
+ALTER TABLE Doctors AUTO_INCREMENT = 2000;
+
+ALTER TABLE Pets AUTO_INCREMENT = 3000;
+
+ALTER TABLE Breeds_species AUTO_INCREMENT = 4000;
+
+ALTER TABLE Conditions AUTO_INCREMENT = 5000;
+
+ALTER TABLE Symptoms AUTO_INCREMENT = 6000;
+
+ALTER TABLE Treatments AUTO_INCREMENT = 7000;
+
+ALTER TABLE Products AUTO_INCREMENT = 8000;
+
+ALTER TABLE Locations AUTO_INCREMENT = 9000;
+
+
