@@ -1,0 +1,163 @@
+PETS - Creature DB (20)
+
+("Ripley", 11, "FEMALE", null)
+Owner: "chart10"
+Doctor: "Wernstrom"
+Conditions: none
+Breeds:  "CAT", shorthair
+
+("Santas Little Helper", 5, "MALE", "Lemonade")
+Owner: "hsimpson"
+Doctor: "Farnsworth"
+Conditions: Glaucoma
+Breeds: "DOG", 
+
+
+("Pluto", 7, "MALE", "Nationwide")
+Owner: "briar"
+Doctor: "Hibbert"
+Conditions: 
+Breeds: "DOG", Bloodhound
+
+
+("Morty", 10, "FEMALE", null)
+Owner: "chart10"
+Doctor: "Riviera"
+Conditions: 
+Breeds: "DOG", Pit Bull
+
+
+("Guinness", 15, "MALE", null)
+Owner: "deliveryman"
+Doctor: "Hibbert"
+Conditions: 
+Breeds: "DOG", Black Labrador
+
+
+("Astro", 11, "MALE", "Healthy Paws")
+Owner: "imthegreatest"
+Doctor: "Hibbert"
+Conditions: 
+Breeds:  "DOG", Great Dane
+
+
+("Courage", 4, "MALE", "Pets Best")
+Owner: "burnsboy"
+Doctor: "Riviera"
+Conditions: 
+Breeds:  "DOG", Beagle
+
+
+("Gromit", 6, "MALE", "Lemonade")
+Owner: "skinner"
+Doctor: "Riviera"
+Conditions: 
+Breeds:  "DOG", Beagle
+
+
+("Zero", 19, "MALE", "Trupanion")
+Owner: "nflanders"
+Doctor: "Wernstrom"
+Conditions: 
+Breeds:  "DOG", Dachshund
+
+
+("Mr. Peabody", 13, "MALE", "Trupanion")
+Owner: "nflanders"
+Doctor: "Farnsworth"
+Conditions: 
+Breeds:  "DOG", Beagle
+
+
+("Balto", 8, "MALE", "Embrace")
+Owner: "suavearabic"
+Doctor: "Riviera"
+Conditions: 
+Breeds:  "DOG", Siberian Husky
+
+
+("Jake", 28, "MALE", "Healthy Paws")
+Owner: "ssbsk"
+Doctor: "Farnsworth"
+Conditions: 
+Breeds:  "DOG", English Bulldog
+
+
+("Rajah", 12, "FEMALE", "Pets Best")
+Owner: "ekrabappel"
+Doctor: "Wernstrom"
+Conditions: 
+Breeds:  "CAT", Siamese
+
+
+("Itchy", 8, "MALE", "Pets Best")
+Owner: "ekrabappel"
+Doctor: "Wernstrom"
+Conditions: 
+Breeds:  "CAT", Shorthair 
+
+
+("Perdita", 6, "FEMALE", "Pets Best")
+Owner: "burnsboy"
+Doctor: "Hibbert"
+Conditions: 
+Breeds:  "DOG", Dalmatian 
+
+
+("Pongo", 7, "MALE", "Pets Best")
+Owner: "burnsboy"
+Doctor: "Hibbert"
+Conditions: 
+Breeds:  "DOG", Dalmatian 
+
+
+("Shadow", 14, "MALE", "Trupanion")
+Owner: "nflanders"
+Doctor: "Riviera"
+Conditions: 
+Breeds:  "DOG", Golden Retriever
+
+
+("Chance", 3, "MALE", null)
+Owner: "deliveryman"
+Doctor: "Farnsworth"
+Conditions: 
+Breeds:  "DOG", Pit Bull
+
+
+("Toto", 4, "FEMALE", "Nationwide")
+Owner: "donutguy"
+Doctor: "Farnsworth"
+Conditions: 
+Breeds:  "DOG", Cairn Terrier
+
+
+("Uga", 12, "MALE", "Nationwide")
+Owner: "donutguy"
+Doctor: "Farnsworth"
+Conditions: 
+Breeds:  "DOG", English Bulldog
+
+SQL: 
+
+INSERT INTO Pet_Owner (owner_id, pet_id) VALUES 
+(1000,3000),
+(1004,3001),
+(1003,3002),
+(1000,3003),
+(1008,3004),
+(1009,3005),
+(1010,3006),
+(1007,3007),
+(1005,3008),
+(1005,3009),
+(1002,3010),
+(1001,3011),
+(1006,3012),
+(1006,3013),
+(1010,3014),
+(1010,3015),
+(1005,3016),
+(1008,3017),
+(1011,3018),
+(1011,3019);
