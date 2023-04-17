@@ -7,6 +7,7 @@ CreatureDB password: databasesystems4710
 Duration: recurring
 Symptoms: scooting, licking, biting, bad smell, constipation, difficulty sitting
 Treatment: dog antibiotics, anal gland expression
+Products: 
 
 "Arthritis", "inflammation and degeneration of one or more joints"
 Duration: life long
