@@ -25,10 +25,10 @@ if (localStorage.getItem('token')) {
 // });
 
 loginForm.addEventListener('submit', async () => {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  console.log(username);
-  const data = { username: username, password: password };
+  const data = {
+    username: document.getElementById('username').value,
+    password: document.getElementById('password').value,
+  };
   console.log(data);
   try {
     const response = await fetch((url = 'http://localhost:5000/doc_login'), {
@@ -40,6 +40,8 @@ loginForm.addEventListener('submit', async () => {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     const result = await response.json();
+    // localStorage.setItem('token', result.access_token);
+    // localStorage.setItem('user_id', result.doctor_id);
     console.log(result);
     let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
   <tr>
@@ -60,8 +62,24 @@ loginForm.addEventListener('submit', async () => {
   </tr>
 </table>`;
     document.getElementById('pageContents').innerHTML = output;
-    return response.json();
+
+    let doctorData = { user_type: 'doctor_id', user_id: result.doctor_id };
+    // fetch pet info related to doctor with /pet_info
+    const petResponse = await fetch((url = 'http://localhost:5000/pet_info'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(doctorData), // body data type must match "Content-Type" header
+    });
+    const petResult = await petResponse.json();
+    console.log(petResult);
+    // output table of pet info in the HTML DOM
   } catch (error) {
+    document.getElementById(
+      'errorMsg'
+    ).innerHTML = `Download error: ${error.message}`;
     console.error(`Download error: ${error.message}`);
   }
 });

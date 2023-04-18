@@ -107,32 +107,48 @@ def login_doc():
                 }
     return response
 
-@app.route("/pet_info", methods=["GET"])
+@app.route("/pet_info", methods=["GET","POST"])
 @jwt_required()
 def get_pet_info():
-    owner_id = request.json.get("owner_id", None)
+    user_type = request.json.get("user_type", None)
+    user_id = request.json.get("user_id", None)
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-
-    cursor.execute('''SELECT O.pet_id AS pet_id, P.name, age, sex, species
-                        FROM Pet_Owner O
-                        INNER JOIN Pets P
-                        ON O.pet_id = P.pet_id
-                        INNER JOIN Breeds_species S
-                        ON P.breed_id=S.breed_id
-                        WHERE owner_id = %s''' 
-                   (owner_id))
+    # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    print(user_type, user_id)
+    if user_type == 'owner_id':
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT P.pet_id, P.name, P.age, P.sex, S.name ' + 
+                    'FROM Pet_Owner O, Pets P, Breeds_species S ' + 
+                    'WHERE O.pet_id = P.pet_id AND P.breed_id=S.breed_id AND O.owner_id = %s', 
+                    (user_id,))
+        pet = cursor.fetchall()
+        print(pet)
+    elif user_type == 'doctor_id':
+        print("doctor")
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT P.pet_id, P.name, P.age, P.sex, S.name ' + 
+                    'FROM Pet_Doctor D, Pets P, Breeds_species S ' + 
+                    'WHERE D.pet_id = P.pet_id AND P.breed_id=S.breed_id AND D.doctor_id = %s', 
+                    (user_id,))
+        pet = cursor.fetchall()
+    else: 
+        return {"msg": "Unknown user type"}, 401
     
-    pet = cursor.fetchone()
-    pet_data={
-        'pet_id': pet['pet_id'],
-        'name': pet['name'],
-        'age': pet['age'],
-        'sex': pet['sex'],
-        'species': pet['species']
-    }
-
-    return pet_data
+    
+    if pet is not None:
+        pet_data = []
+        for row in pet:
+            pet_data_row={
+                'pet_id': row['pet_id'],
+                'name': row['name'],
+                'age': row['age'],
+                'sex': row['sex'],
+                'breed_id': row['S.name']
+            }
+            pet_data.append(pet_data_row)
+        return pet_data
+    
+    return {"msg": "No pet found"}, 404
 
 @app.route("/pet_history", methods=["GET"])
 @jwt_required()
