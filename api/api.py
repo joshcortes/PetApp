@@ -118,7 +118,7 @@ def get_pet_info():
 
     return pet_data
 
-@app.route("pet_history", methods=["GET"])
+@app.route("/pet_history", methods=["GET"])
 @jwt_required()
 def get_pet_history():
     pet_id = request.json.get("pet_id", None)
@@ -138,7 +138,7 @@ def get_pet_history():
     }
     return pet_history
 
-@app.route("add_pet_condition")
+@app.route("/add_pet_condition")
 @jwt_required()
 @doc_required()
 def add_pet_condition():
