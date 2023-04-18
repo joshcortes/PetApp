@@ -505,14 +505,12 @@ def get_pet_symptom_condition():
                             (pet_id,))
         conditions = cursor.fetchall()
 
-
         cursor.execute('''SELECT S.name, S.affected_part, P.startDate, P.endDate, P.severity 
                             FROM Symptoms S, Pet_Symptom P
                             WHERE S.symptom_id=P.symptom_id AND pet_id = %s''',
                             (pet_id,))
         
         symptoms = cursor.fetchall()
-
 
         con_symp_dict = {'conditions': conditions,
                          'symptoms': symptoms}
