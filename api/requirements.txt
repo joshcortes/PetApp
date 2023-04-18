@@ -2,3 +2,4 @@ flask
 flask_mysqldb
 flask_jwt_extended
 python-dotenv
+flask_cors
