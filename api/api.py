@@ -107,7 +107,7 @@ def login_doc():
                 }
     return response
 
-@app.route("/pet_info", methods=["GET"])
+@app.route("/pet_info", methods=["GET","POST"])
 # @jwt_required()
 def get_pet_info():
     user_type = request.json.get("user_type", None)
