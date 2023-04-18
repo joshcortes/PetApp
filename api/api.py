@@ -195,3 +195,37 @@ def update_condition_end_date():
     cursor.close()
 
     return 'Successfully updated the condition end date!'
+
+@app.route("/remove_pet_conditon")
+@jwt_required()
+@doc_required()
+def remove_pet_conditon():
+    cursor = mysql.connection.cursor()
+
+    condition_id = request.json['condition_id']
+    pet_id = request.json['pet_id']
+
+    cursor.execute('DELETE FROM Pet_Condition WHERE condition_id = %s AND pet_id = %s',
+                   condition_id, pet_id)
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully removed condition from pet!"
+
+@app.route("/remove_pet_symptom")
+@jwt_required()
+@doc_required()
+def remove_pet_symptom():
+    cursor = mysql.connection.cursor()
+
+    symptom_id = request.json['symptom_id']
+    pet_id = request.json['pet_id']
+
+    cursor.execute('DELETE FROM Pet_Condition WHERE symptom_id = %s AND pet_id = %s',
+                   symptom_id, pet_id)
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully removed symptom from pet!"
