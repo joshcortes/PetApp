@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <title>PetApp</title>
   </head>
   <body>
@@ -20,34 +20,41 @@
             </nav>
     </header>
 
-    <div class="form-login" id="loginForm">
-        <div class="form-input">
-            <h1>Login</h1>
-            <p>Please Enter Username & Password</p>
-            <form action="#">
-                <div class="class-field">
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter your Username" required>
-            </div>
-            <div class="class-field">
-                <label for="password">Password</label>
-                <input type="text" placeholder="Enter your Password" required>
-            </div>
-            <div class="field-btn">
-                <input type="submit" value="Login">
-            </div>
-            </form>
-            <div class="login-register">
-                <span> Haven't registered? <a href="./register.html">Register</a></span>
-            </div>
+    <h6 id="errorMsg"></h6>
+    <article id="pageContents">
+      <div id="loginForm">
+        <h1>Login</h1>
+        <p>Please Enter Username & Password</p>
+        <form action="#"
+          <div class="class-field">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter your Username"
+              required
+            />
+          </div>
+          <div class="class-field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="text"
+              placeholder="Enter your Password"
+              required
+            />
+          </div>
+          <div class="field-btn">
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+        <div class="login-register">
+          <span>
+            Haven't registered? <a href="./register.html">Register</a></span
+          >
         </div>
-    </div>
-
-    <div id="loggedIn">
-        <h1>My Pets</h1>
-        show basic info for pets; can click on some kind of button to see each pet's medical history<br>
-        in medical history, can click on a thing to see products for conditions (link to advanced feature)
-    </div>
+      </div>
+    </article>
 
     <script src="owner.js"></script>
 </body>
