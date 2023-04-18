@@ -282,4 +282,111 @@ def designate_doctor():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully designated owner of pet!"
+    return "Successfully designated doctor of pet!"
+
+@app.route("/register_owner", methods=['POST'])
+def register_owner():
+    cursor = mysql.connection.cursor()
+
+    first_name = request.json['first_name']
+    last_name = request.json['last_name']
+    email = request.json['email']
+    phone = request.json['phone']
+    address = request.json['address']
+    username = request.json['username']
+    password = request.json['password']
+
+    cursor.execute('INSERT INTO Owners(first_name, last_name, email, phone_number, address, username, password) VALUES(%s,%s,%s,%s,%s,%s,%s)',
+                   (first_name, last_name, email, phone, address, username, password))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully added owner!"
+
+@app.route("/register_doctor", methods=['POST'])
+def register_doctor():
+    cursor = mysql.connection.cursor()
+
+    first_name = request.json['first_name']
+    last_name = request.json['last_name']
+    email = request.json['email']
+    phone = request.json['phone']
+    address = request.json['address']
+    license_number = request.json['license_number']
+    username = request.json['username']
+    password = request.json['password']
+
+    cursor.execute('INSERT INTO Doctors(first_name, last_name, email, phone_number, address, license_number, username, password) VALUES(%s,%s,%s,%s,%s,%s,%s)',
+                   (first_name, last_name, email, phone, address, license_number,username, password))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully added owner!"
+
+# For this route to work, send via fetch a dictionary that looks like this:
+# dict = {'symptoms': symptom_array[]}
+@app.route("/likely_condition", methods=['POST'])
+@jwt_required()
+def get_likely_condition():
+    cursor = mysql.connection.cursor()
+
+    symptoms = request.json['symptoms']
+
+    response = ''
+
+    return response
+
+@app.route("/search_by_x", methods=['GET'])
+@jwt_required()
+def search_by_x():
+    '''
+        searchign any attribute you want
+        @table -> any table you want to search i.e. owner, pet doctor etc
+        @what_to_search_for -> the attribut you want to search by i.e. name, id, conditon etc
+        @specified_search_item -> The specific value you want to find i.e. samantha, kubo, bronchitis
+    '''
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    table = request.json('table')
+    what_to_search_for = request.json('what_to_search_for')
+    specified_search_item = request.json('specified_search_item')
+    
+    cursor.execute('SELECT * FROM %s WHERE %s = %s',
+                   (table, what_to_search_for, specified_search_item))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    data = cursor.fetchall()
+
+    return data
+
+@app.route("/get_product_condition", methods=['GET'])
+@jwt_required()
+def get_product_condition():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    condition_id = request.json('condition_id')
+
+    cursor.execute('SELECT product_id, name, type FROM Product P JOIN Condition_Product R ON P.product_id = R.product_id WHERE C.condition_id = %s',
+                   (condition_id))    
+
+    data = cursor.fetchall()
+
+    return data
+
+@app.route("/get_locations", methods=['GET'])
+@jwt_required()
+def get_locations():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    product_id = request.json['product_id']
+
+    cursor.execute('SELECT loc_id, address, name FROM Locations L, Product_Location P WHERE L.loc_id = P.loc_id AND P.product_id = %s',
+                   (product_id))
+    
+    data = cursor.fetchall()
+
+    return data
