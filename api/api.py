@@ -480,3 +480,42 @@ def get_locations():
     data = cursor.fetchall()
 
     return data
+
+app.route('/get_pet_symptom_condition')
+@jwt_required()
+def get_pet_symptom_condition():
+    '''
+        make sure you are sending a dictionary with an array
+    '''
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    pet_ids = request.json['pet_ids']
+
+    all_pet_info = {}
+
+    for pet_id in pet_ids:
+        cursor.execute('''SELECT name, affected_part, startDate, endDate, severity 
+                            FROM Conditions
+                            WHERE pet_id = %s''',
+                            (pet_id))
+        conditions = cursor.fetchall()
+
+        cursor.clear_attributes()
+
+        cursor.execute('''SELECT name, affected_part, startDate, endDate, severity 
+                            FROM Symptoms
+                            WHERE pet_id = %s''',
+                            (pet_id))
+        
+        symptoms = cursor.fetchall()
+
+        cursor.clear_attributes()
+
+        con_symp_dict = {'conditions': conditions,
+                         'symptoms': symptoms}
+        
+        all_pet_info[pet_id] = con_symp_dict
+
+    cursor.close()
+
+    return all_pet_info
