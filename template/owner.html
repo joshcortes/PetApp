@@ -9,41 +9,46 @@
   </head>
   <body>
     <header>
-      <nav class="nav-links">
-        <ul>
-          <li><a href="./index.html">PetCare</a></li>
-          <li><a href="./about.html">About Us</a></li>
-          <li><a href="./login.html">Login</a></li>
-          <li><a href="./register.html">Register</a></li>
-          <li><a href="./doctor.html">Doctor</a></li>
-          <li><a href="./owner.html">Owner</a></li>
-        </ul>
-      </nav>
+        <nav class="nav-links">
+            <ul>
+                <li> <a href="./index.html">PetCare</a></li>
+                <li> <a href="./about.html">About Us</a></li>
+                <li> <a href="./register.html">Register</a></li>
+                <li> <a href="./doctor.html">Doctor</a></li>
+                <li> <a href="./owner.html">Owner</a></li>
+            </ul>
+            </nav>
     </header>
 
-    <h1>Login</h1>
-    <form action="" class="login">
-      <div class="class-field">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Enter your Username"
-          required
-        />
-      </div>
-      <div class="class-field">
-        <label for="username">Password</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Enter your Password"
-          required
-        />
-      </div>
-    </form>
-    <h1>Your Pets</h1>
-  </body>
+    <div class="form-login" id="loginForm">
+        <div class="form-input">
+            <h1>Login</h1>
+            <p>Please Enter Username & Password</p>
+            <form action="#">
+                <div class="class-field">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter your Username" required>
+            </div>
+            <div class="class-field">
+                <label for="password">Password</label>
+                <input type="text" placeholder="Enter your Password" required>
+            </div>
+            <div class="field-btn">
+                <input type="submit" value="Login">
+            </div>
+            </form>
+            <div class="login-register">
+                <span> Haven't registered? <a href="./register.html">Register</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="loggedIn">
+        <h1>My Pets</h1>
+        show basic info for pets; can click on some kind of button to see each pet's medical history<br>
+        in medical history, can click on a thing to see products for conditions (link to advanced feature)
+    </div>
+
+    <script src="owner.js"></script>
+</body>
 </html>
