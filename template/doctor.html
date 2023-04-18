@@ -9,59 +9,76 @@
   </head>
   <body>
     <header>
-        <nav class="nav-links">
-            <ul>
-                <li> <a href="./index.html">PetCare</a></li>
-                <li> <a href="./about.html">About Us</a></li>
-                <li> <a href="./register.html">Register</a></li>
-                <li> <a href="./doctor.html">Doctor</a></li>
-                <li> <a href="./owner.html">Owner</a></li>
-            </ul>
-            </nav>
+      <nav class="nav-links">
+        <ul>
+          <li><a href="./index.html">PetCare</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./register.html">Register</a></li>
+          <li><a href="./doctor.html">Doctor</a></li>
+          <li><a href="./owner.html">Owner</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="form-login" id="loginForm">
-        <div class="form-input">
-            <h1>Login</h1>
-            <p>Please Enter Username & Password</p>
-            <form action="#">
-                <div class="class-field">
-                <label for="username">Username</label>
-                <input type="text" placeholder="Enter your Username" required>
-            </div>
-            <div class="class-field">
-                <label for="password">Password</label>
-                <input type="text" placeholder="Enter your Password" required>
-            </div>
-            <div class="field-btn">
-                <input type="submit" value="Login">
-            </div>
-            </form>
-            <div class="login-register">
-                <span> Haven't registered? <a href="./register.html">Register</a></span>
-            </div>
+      <div class="form-input">
+        <h1>Login</h1>
+        <p>Please Enter Username & Password</p>
+        <form action="#">
+          <div class="class-field">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter your Username"
+              required
+            />
+          </div>
+          <div class="class-field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="text"
+              placeholder="Enter your Password"
+              required
+            />
+          </div>
+          <div class="field-btn">
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+        <div class="login-register">
+          <span>
+            Haven't registered? <a href="./register.html">Register</a></span
+          >
         </div>
+      </div>
     </div>
 
     <div id="loggedIn">
-        <div class="form-input">
-            <h1>Find Patient Info</h1>
-            <p>Search for patient by name</p>
-            <form action="#">
-                <div class="class-field">
-                <label for="name">Name</label>
-                <input id="name" type="text" placeholder="Enter patient name" required>
-            </div>
-            <div class="field-btn">
-                <input type="submit" value="search">
-            </div>
+      <div class="form-input">
+        <h1>Find Patient Info</h1>
+        <p>Search for patient by name</p>
+        <form action="#">
+          <div class="class-field">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Enter patient name"
+              required
+            />
+          </div>
+          <div class="field-btn">
+            <input type="submit" value="search" />
+          </div>
         </form>
-        </div>
-        <h1>Pets type</h1>
-        <h2>Pet Condition</h2>
-        <p>Treatments for pet</p>
+      </div>
+      <h1>Pets type</h1>
+      <h2>Pet Condition</h2>
+      <p>Treatments for pet</p>
     </div>
 
     <script src="doctor.js"></script>
-</body>
+  </body>
 </html>
