@@ -40,8 +40,8 @@ loginForm.addEventListener('submit', async () => {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     const result = await response.json();
-    // localStorage.setItem('token', result.access_token);
-    // localStorage.setItem('user_id', result.doctor_id);
+    localStorage.setItem('token', result.access_token);
+    localStorage.setItem('user_id', result.doctor_id);
     console.log(result);
     let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
   <tr>
