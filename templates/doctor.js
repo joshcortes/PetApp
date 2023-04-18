@@ -1,14 +1,14 @@
-if (localStorage.getItem('token')) {
-  loginForm = document.getElementById('loginForm');
-  loginForm.style.display = 'none';
-  loggedIn = document.getElementById('loggedIn');
-  loggedIn.style.display = 'block';
-} else {
-  loginForm = document.getElementById('loginForm');
-  //loginForm.style.display = "block";
-  loggedIn = document.getElementById('loggedIn');
-  loggedIn.style.display = 'none';
-}
+// if (localStorage.getItem('token')) {
+//   loginForm = document.getElementById('loginForm');
+//   loginForm.style.display = 'none';
+//   loggedIn = document.getElementById('loggedIn');
+//   loggedIn.style.display = 'block';
+// } else {
+//   loginForm = document.getElementById('loginForm');
+//   //loginForm.style.display = "block";
+//   loggedIn = document.getElementById('loggedIn');
+//   loggedIn.style.display = 'none';
+// }
 
 // loginForm.addEventListener('submit', async () => {
 //   const username = document.getElementById('username').value;
@@ -35,8 +35,6 @@ loginForm.addEventListener('submit', async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
@@ -71,13 +69,18 @@ loginForm.addEventListener('submit', async () => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token'),
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(doctorData), // body data type must match "Content-Type" header
     });
     const petResult = await petResponse.json();
     console.log(petResult);
+
     // output table of pet info in the HTML DOM
+    let petList = `<h1>Current Patients</h1>`;
+    petResult.forEach((pet) => {
+      petList += `<h2>${pet.name}  ${pet.breed_id} ${pet.age} ${pet.sex}</h2>`;
+    });
+    document.getElementById('patients').innerHTML = petList;
   } catch (error) {
     document.getElementById(
       'errorMsg'
@@ -85,3 +88,7 @@ loginForm.addEventListener('submit', async () => {
     console.error(`Download error: ${error.message}`);
   }
 });
+
+// doc_login
+
+//
