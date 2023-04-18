@@ -490,7 +490,6 @@ def get_pet_symptom_condition():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     pet_ids = request.json['pet_ids']
-
     all_pet_info = {}
 
     for pet_id in pet_ids:
