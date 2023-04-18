@@ -10,11 +10,6 @@ if (localStorage.getItem('token')) {
   loggedIn.style.display = 'none';
 }
 
-async function doctorLogin() {
-  const response = await fetch('localhost:5000/');
-  const jsonData = await response.json();
-  console.log(jsonData);
-}
 loginForm.addEventListener('submit', async () => {
   const username = document.querySelector('username').value;
   const password = document.querySelector('password').value;
