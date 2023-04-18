@@ -35,13 +35,14 @@ loginForm.addEventListener('submit', async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     const result = await response.json();
-    // localStorage.setItem('token', result.access_token);
-    // localStorage.setItem('user_id', result.doctor_id);
+    localStorage.setItem('token', result.access_token);
+    localStorage.setItem('user_id', result.doctor_id);
     console.log(result);
     let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
   <tr>
@@ -69,6 +70,7 @@ loginForm.addEventListener('submit', async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(doctorData), // body data type must match "Content-Type" header
