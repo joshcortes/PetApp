@@ -206,7 +206,7 @@ def remove_pet_conditon():
     pet_id = request.json['pet_id']
 
     cursor.execute('DELETE FROM Pet_Condition WHERE condition_id = %s AND pet_id = %s',
-                   condition_id, pet_id)
+                   (condition_id, pet_id))
 
     cursor.connection.commit()
     cursor.close()
@@ -223,7 +223,7 @@ def remove_pet_symptom():
     pet_id = request.json['pet_id']
 
     cursor.execute('DELETE FROM Pet_Condition WHERE symptom_id = %s AND pet_id = %s',
-                   symptom_id, pet_id)
+                   (symptom_id, pet_id))
 
     cursor.connection.commit()
     cursor.close()
@@ -234,5 +234,18 @@ def remove_pet_symptom():
 @jwt_required()
 @doc_required()
 def add_pet():
-    
-    return "THIS IS NOT DUNE"
+    cursor = mysql.connection.cursor()
+
+    name = request.json['name']
+    age = request.json['age']
+    sex = request.json['sex']
+    insurance = request.json['insurance']
+    breed_id = request.json['breed_id']
+
+    cursor.execute('INSERT INTO Pets(name, age, sex, insurance, breed_id) VALUES(%s,%s,%s,%s,%s)',
+                   (name, age, sex, insurance, breed_id))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully removed symptom from pet!"
