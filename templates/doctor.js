@@ -88,6 +88,37 @@ loginForm.addEventListener('submit', async () => {
     console.error(`Download error: ${error.message}`);
   }
 });
+function addPetCondition() {
+  const pet_id = document.getElementById("pet_id").value;
+  const start_date = document.getElementById("start_date").value;
+  const end_date = document.getElementById("end_date").value;
+  const severity = document.getElementById("severity").value;
+  const condition_name = document.getElementById("condition_name").value;
+  
+  fetch('http://localhost:5000/add_pet_condition', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+    body: JSON.stringify({
+      pet_id: pet_id,
+      starDate: start_date,
+      endDate: end_date,
+      severity: severity,
+      condition_name: condition_name
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    alert(data);
+  })
+  .catch(error => {
+    console.error(error);
+    alert('An error occurred while adding the condition.');
+  });
+}
 
 // doc_login
 
