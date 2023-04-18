@@ -44,7 +44,8 @@ loginForm.addEventListener('submit', async () => {
       <td>Address:</td>
       <td>${result.address}</td>
     </tr>
-  </table>`;
+  </table>
+  <div id='pets'></div>`;
       document.getElementById('pageContents').innerHTML = output;
   
       let ownerData = { user_type: 'owner_id', user_id: result.owner_id };
@@ -60,7 +61,13 @@ loginForm.addEventListener('submit', async () => {
       });
       const petResult = await petResponse.json();
       console.log(petResult);
+
       // output table of pet info in the HTML DOM
+      let petList = `<h1>My Pets</h1>`;
+      petResult.forEach((pet) => {
+      petList += `<h2 class='pet' id='${pet.pet_id}'>${pet.name}  ${pet.breed_id} ${pet.age} ${pet.sex}</h2>`;
+      });
+      document.getElementById('pets').innerHTML = petList;
     } catch (error) {
       document.getElementById(
         'errorMsg'
