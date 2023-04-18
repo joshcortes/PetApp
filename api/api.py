@@ -118,7 +118,7 @@ def get_pet_info():
 
     return pet_data
 
-@app.route("pet_history", methods=["GET"])
+@app.route("/pet_history", methods=["GET"])
 @jwt_required()
 def get_pet_history():
     pet_id = request.json.get("pet_id", None)
@@ -138,7 +138,7 @@ def get_pet_history():
     }
     return pet_history
 
-@app.route("add_pet_condition")
+@app.route("/add_pet_condition", methods=['POST'])
 @jwt_required()
 @doc_required()
 def add_pet_condition():
@@ -156,5 +156,83 @@ def add_pet_condition():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully added condition to"
+    return "Successfully added condition to db!"
 
+@app.route("/add_pet_symptom", methods=['POST'])
+@jwt_required()
+@doc_required()
+def add_pet_symptom():
+    cursor = mysql.connection.cursor()
+
+    pet_id = request.json['pet_id']
+    startDate = request.json['starDate']
+    endDate = request.json['endDate']
+    severity = request.json['severity']
+    symptom_name = request.json['symptom_name']
+
+    cursor.execute('INSERT INTO Pet_Symptom(symptom_id, pet_id, startDate, endDate, severity) SELECT symptom_id, %s,%s,%s,%s FROM Symptom WHERE name = %s',
+                   (pet_id, startDate, endDate, severity, symptom_name))
+    
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully added symptom to db!"
+
+@app.route("/update_condition_end_date", methods=['POST'])
+@jwt_required()
+@doc_required()
+def update_condition_end_date():
+    cursor = mysql.connection.cursor()
+
+    end_date = request.json['end_date']
+    symptom_id = request.json['symptom_id']
+    pet_id = request.json['pet_id']
+
+    cursor.execute('UPDATE Pet_Symptom SET endDate = %s WHERE symptom_id = %s AND pet_id = %s',
+                   (end_date, symptom_id, pet_id))
+    
+    cursor.connection.commit()
+    cursor.close()
+
+    return 'Successfully updated the condition end date!'
+
+@app.route("/remove_pet_conditon", methods=['POST'])
+@jwt_required()
+@doc_required()
+def remove_pet_conditon():
+    cursor = mysql.connection.cursor()
+
+    condition_id = request.json['condition_id']
+    pet_id = request.json['pet_id']
+
+    cursor.execute('DELETE FROM Pet_Condition WHERE condition_id = %s AND pet_id = %s',
+                   condition_id, pet_id)
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully removed condition from pet!"
+
+@app.route("/remove_pet_symptom", methods=['POST'])
+@jwt_required()
+@doc_required()
+def remove_pet_symptom():
+    cursor = mysql.connection.cursor()
+
+    symptom_id = request.json['symptom_id']
+    pet_id = request.json['pet_id']
+
+    cursor.execute('DELETE FROM Pet_Condition WHERE symptom_id = %s AND pet_id = %s',
+                   symptom_id, pet_id)
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully removed symptom from pet!"
+
+@app.route("/add_pet", methods=['POST'])
+@jwt_required()
+@doc_required()
+def add_pet():
+    
+    return "THIS IS NOT DUNE"
