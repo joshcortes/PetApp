@@ -8,8 +8,10 @@ from flask_jwt_extended import get_jwt
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import verify_jwt_in_request
 from flask_jwt_extended import jwt_required
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
 jwt = JWTManager(app)
@@ -79,22 +81,30 @@ def login_doc():
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute('Select username, doctor_id FROM Doctors WHERE username = %s AND password = %s',
+    cursor.execute('Select doctor_id, username, password, first_name, last_name, email, phone_number, address, license_number FROM Doctors WHERE username = %s AND password = %s',
                     (username, password))
     user = cursor.fetchone()
-
-    doctor_id = user['doctor_id']
+    print(user)
 
     if (user is None) or (user['username'] != username or user['password'] != password):
         return {"msg": "Wrong username or password"}, 401
 
+    doctor_id = user['doctor_id']
+    
     access_token = create_access_token(
         identity = username,
         additional_claims={"is_doctor": True}
     )
 
     response = {"access_token": access_token,
-                "doctor_id": doctor_id}
+                "doctor_id": doctor_id,
+                "first_name": user["first_name"],
+                "last_name": user["last_name"],
+                "email": user["email"],
+                "phone_number": user["phone_number"],
+                "address": user["address"],
+                "license_number": user["license_number"],
+                }
     return response
 
 @app.route("/pet_info", methods=["GET"])
