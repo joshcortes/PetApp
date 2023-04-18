@@ -11,7 +11,7 @@ from flask_jwt_extended import jwt_required
 
 app = Flask(__name__)
 
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_SECRET_KEY"] = "super mega ultra secret code that should be changed and put away somewhere XD"  # Change this!
 jwt = JWTManager(app)
 
 ## DATABASE CONFIGURATION
@@ -104,7 +104,13 @@ def get_pet_info():
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute('SELECT pet_id, name, age, sex, species FROM Pet_Owner O, Pet P, Breeds_Species S WHERE O.pet_id = P.pet_id AND P.breed_id=S.breed_id AND owner_id = %s', 
+    cursor.execute('''SELECT O.pet_id AS pet_id, P.name, age, sex, species
+                        FROM Pet_Owner O
+                        INNER JOIN Pets P
+                        ON O.pet_id = P.pet_id
+                        INNER JOIN Breeds_species S
+                        ON P.breed_id=S.breed_id
+                        WHERE owner_id = %s''' 
                    (owner_id))
     
     pet = cursor.fetchone()
@@ -125,7 +131,9 @@ def get_pet_history():
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute('SELECT name, affected_part, severity, startDate, endDate FROM Symptoms S, Pet_Symptom P WHERE S.symptom_id = P.symptom_ID AND P.pet_id = %s',
+    cursor.execute('''SELECT name, affected_part, severity, startDate, endDate 
+                        FROM Symptoms S, Pet_Symptom P 
+                        WHERE S.symptom_id = P.symptom_ID AND P.pet_id = %s''',
                   (pet_id))
     
     history = cursor.fetchone()
@@ -150,7 +158,10 @@ def add_pet_condition():
     severity = request.json['severity']
     conditon_name = request.json['condition_name']
 
-    cursor.execute('INSERT INTO Pet_Symptom(condition_id, pet_id, startDate, endDate, severity) SELECT condition_id, %s,%s,%s,%s FROM Condition WHERE name = %s',
+    cursor.execute('''INSERT INTO Pet_Symptom(condition_id, pet_id, startDate, endDate, severity) 
+                        SELECT condition_id, %s,%s,%s,%s 
+                        FROM Condition 
+                        WHERE name = %s''',
                    (pet_id, startDate, endDate, severity, conditon_name))
     
     cursor.connection.commit()
@@ -170,7 +181,10 @@ def add_pet_symptom():
     severity = request.json['severity']
     symptom_name = request.json['symptom_name']
 
-    cursor.execute('INSERT INTO Pet_Symptom(symptom_id, pet_id, startDate, endDate, severity) SELECT symptom_id, %s,%s,%s,%s FROM Symptom WHERE name = %s',
+    cursor.execute('''INSERT INTO Pet_Symptom(symptom_id, pet_id, startDate, endDate, severity) 
+                        SELECT symptom_id, %s,%s,%s,%s 
+                        FROM Symptom 
+                        WHERE name = %s''',
                    (pet_id, startDate, endDate, severity, symptom_name))
     
     cursor.connection.commit()
@@ -188,7 +202,9 @@ def update_condition_end_date():
     symptom_id = request.json['symptom_id']
     pet_id = request.json['pet_id']
 
-    cursor.execute('UPDATE Pet_Symptom SET endDate = %s WHERE symptom_id = %s AND pet_id = %s',
+    cursor.execute('''UPDATE Pet_Symptom 
+                        SET endDate = %s 
+                        WHERE symptom_id = %s AND pet_id = %s''',
                    (end_date, symptom_id, pet_id))
     
     cursor.connection.commit()
@@ -205,7 +221,8 @@ def remove_pet_conditon():
     condition_id = request.json['condition_id']
     pet_id = request.json['pet_id']
 
-    cursor.execute('DELETE FROM Pet_Condition WHERE condition_id = %s AND pet_id = %s',
+    cursor.execute('''DELETE FROM Pet_Condition 
+                        WHERE condition_id = %s AND pet_id = %s''',
                    (condition_id, pet_id))
 
     cursor.connection.commit()
@@ -222,7 +239,8 @@ def remove_pet_symptom():
     symptom_id = request.json['symptom_id']
     pet_id = request.json['pet_id']
 
-    cursor.execute('DELETE FROM Pet_Condition WHERE symptom_id = %s AND pet_id = %s',
+    cursor.execute('''DELETE FROM Pet_Condition 
+                        WHERE symptom_id = %s AND pet_id = %s''',
                    (symptom_id, pet_id))
 
     cursor.connection.commit()
@@ -242,7 +260,8 @@ def add_pet():
     insurance = request.json['insurance']
     breed_id = request.json['breed_id']
 
-    cursor.execute('INSERT INTO Pets(name, age, sex, insurance, breed_id) VALUES(%s,%s,%s,%s,%s)',
+    cursor.execute('''INSERT INTO Pets(name, age, sex, insurance, breed_id) 
+                        VALUES(%s,%s,%s,%s,%s)''',
                    (name, age, sex, insurance, breed_id))
 
     cursor.connection.commit()
@@ -259,7 +278,8 @@ def designate_owner():
     pet_id = request.json['pet_id']
     owner_id = request.json['owner_id']
 
-    cursor.execute('INSERT INTO Pet_Owner(pet_id, owner_id) VALUES(%s,%s)',
+    cursor.execute('''INSERT INTO Pet_Owner(pet_id, owner_id) 
+                        VALUES(%s,%s)''',
                    (pet_id,owner_id))
 
     cursor.connection.commit()
@@ -276,7 +296,8 @@ def designate_doctor():
     pet_id = request.json['pet_id']
     doctor_id = request.json['owner_id']
 
-    cursor.execute('INSERT INTO Pet_Owner(pet_id, owner_id) VALUES(%s,%s)',
+    cursor.execute('''INSERT INTO Pet_Owner(pet_id, owner_id) 
+                        VALUES(%s,%s)''',
                    (pet_id,doctor_id))
 
     cursor.connection.commit()
@@ -296,7 +317,8 @@ def register_owner():
     username = request.json['username']
     password = request.json['password']
 
-    cursor.execute('INSERT INTO Owners(first_name, last_name, email, phone_number, address, username, password) VALUES(%s,%s,%s,%s,%s,%s,%s)',
+    cursor.execute('''INSERT INTO Owners(first_name, last_name, email, phone_number, address, username, password) 
+                        VALUES(%s,%s,%s,%s,%s,%s,%s)''',
                    (first_name, last_name, email, phone, address, username, password))
 
     cursor.connection.commit()
@@ -317,7 +339,8 @@ def register_doctor():
     username = request.json['username']
     password = request.json['password']
 
-    cursor.execute('INSERT INTO Doctors(first_name, last_name, email, phone_number, address, license_number, username, password) VALUES(%s,%s,%s,%s,%s,%s,%s)',
+    cursor.execute('''INSERT INTO Doctors(first_name, last_name, email, phone_number, address, license_number, username, password) 
+                        VALUES(%s,%s,%s,%s,%s,%s,%s)''',
                    (first_name, last_name, email, phone, address, license_number,username, password))
 
     cursor.connection.commit()
@@ -333,6 +356,35 @@ def get_likely_condition():
     cursor = mysql.connection.cursor()
 
     symptoms = request.json['symptoms']
+
+    cursor.execute('''SELECT id, name, COUNT(symptom_id) AS MatchingSymptomsNumber
+                    FROM 
+                    (SELECT C.condition_id AS id, name, symptom_id 
+                    FROM Conditions C
+                    INNER JOIN Symptom_Indicates_Condition S 
+                    ON C.condition_id = S.condition_id
+                    WHERE symptom_id = %s 
+                    UNION
+                    SELECT C.condition_id AS id, name, symptom_id 
+                    FROM Conditions C
+                    INNER JOIN Symptom_Indicates_Condition S 
+                    ON C.condition_id = S.condition_id
+                    WHERE symptom_id = %s
+                    UNION
+                    SELECT C.condition_id AS id, name, symptom_id 
+                    FROM Conditions C
+                    INNER JOIN Symptom_Indicates_Condition S 
+                    ON C.condition_id = S.condition_id
+                    WHERE symptom_id = %s 
+                    UNION
+                    SELECT C.condition_id AS id, name, symptom_id 
+                    FROM Conditions C
+                    INNER JOIN Symptom_Indicates_Condition S 
+                    ON C.condition_id = S.condition_id
+                    WHERE symptom_id = %s) symptom_conditions
+                    GROUP BY id
+                    ORDER BY COUNT(symptom_id) DESC;''',
+                    (symptoms[0], symptoms[1], symptoms[2], symptoms[3]))
 
     response = ''
 
@@ -370,7 +422,10 @@ def get_product_condition():
 
     condition_id = request.json('condition_id')
 
-    cursor.execute('SELECT product_id, name, type FROM Product P JOIN Condition_Product R ON P.product_id = R.product_id WHERE C.condition_id = %s',
+    cursor.execute('''SELECT product_id, name, type 
+                        FROM Product P 
+                        JOIN Condition_Product R ON P.product_id = R.product_id 
+                        WHERE C.condition_id = %s''',
                    (condition_id))    
 
     data = cursor.fetchall()
@@ -384,7 +439,9 @@ def get_locations():
 
     product_id = request.json['product_id']
 
-    cursor.execute('SELECT loc_id, address, name FROM Locations L, Product_Location P WHERE L.loc_id = P.loc_id AND P.product_id = %s',
+    cursor.execute('''SELECT loc_id, address, name 
+                        FROM Locations L, Product_Location P 
+                        WHERE L.loc_id = P.loc_id AND P.product_id = %s''',
                    (product_id))
     
     data = cursor.fetchall()
