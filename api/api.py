@@ -64,7 +64,7 @@ def login_owner():
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute('Select username, owner_id FROM Owners WHERE username = %s AND password = %s',
+    cursor.execute('Select username, owner_id, first_name, last_name, email, phone_number, address, password FROM Owners WHERE username = %s AND password = %s',
                     (username, password))
     user = cursor.fetchone()
 
@@ -79,7 +79,13 @@ def login_owner():
     )
 
     response = {"access_token": access_token,
-                "doctor_id": owner_id}
+                "owner_id": owner_id,
+                "first_name": user["first_name"],
+                "last_name": user["last_name"],
+                "email": user["email"],
+                "phone_number": user["phone_number"],
+                "address": user["address"]
+                }
     return response
 
 @app.route("/doc_login", methods=['POST'])
