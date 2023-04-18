@@ -266,3 +266,20 @@ def designate_owner():
     cursor.close()
 
     return "Successfully designated owner of pet!"
+
+@app.route("/designate_doctor", methods=['POST'])
+@jwt_required()
+@doc_required()
+def designate_doctor():
+    cursor = mysql.connection.cursor()
+
+    pet_id = request.json['pet_id']
+    doctor_id = request.json['owner_id']
+
+    cursor.execute('INSERT INTO Pet_Owner(pet_id, owner_id) VALUES(%s,%s)',
+                   (pet_id,doctor_id))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully designated owner of pet!"
