@@ -138,7 +138,7 @@ def get_pet_history():
     }
     return pet_history
 
-@app.route("/add_pet_condition")
+@app.route("/add_pet_condition", methods=['POST'])
 @jwt_required()
 @doc_required()
 def add_pet_condition():
@@ -158,7 +158,7 @@ def add_pet_condition():
 
     return "Successfully added condition to db!"
 
-@app.route("/add_pet_symptom")
+@app.route("/add_pet_symptom", methods=['POST'])
 @jwt_required()
 @doc_required()
 def add_pet_symptom():
@@ -178,7 +178,7 @@ def add_pet_symptom():
 
     return "Successfully added symptom to db!"
 
-@app.route("/update_condition_end_date")
+@app.route("/update_condition_end_date", methods=['POST'])
 @jwt_required()
 @doc_required()
 def update_condition_end_date():
@@ -196,7 +196,7 @@ def update_condition_end_date():
 
     return 'Successfully updated the condition end date!'
 
-@app.route("/remove_pet_conditon")
+@app.route("/remove_pet_conditon", methods=['POST'])
 @jwt_required()
 @doc_required()
 def remove_pet_conditon():
@@ -213,7 +213,7 @@ def remove_pet_conditon():
 
     return "Successfully removed condition from pet!"
 
-@app.route("/remove_pet_symptom")
+@app.route("/remove_pet_symptom", methods=['POST'])
 @jwt_required()
 @doc_required()
 def remove_pet_symptom():
@@ -229,3 +229,10 @@ def remove_pet_symptom():
     cursor.close()
 
     return "Successfully removed symptom from pet!"
+
+@app.route("/add_pet", methods=['POST'])
+@jwt_required()
+@doc_required()
+def add_pet():
+    
+    return "THIS IS NOT DUNE"
