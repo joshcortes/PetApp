@@ -8,6 +8,7 @@ from flask_jwt_extended import get_jwt
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import verify_jwt_in_request
 from flask_jwt_extended import jwt_required
+from flask_jwt_extended import unset_jwt_cookies
 
 app = Flask(__name__)
 
@@ -46,6 +47,13 @@ def owner_required():
                 return jsonify(msg="Owners only!"), 403
         return decorator
     return wrapper
+
+@app.route("/logout", methods=['POST'])
+@jwt_required()
+def logout():
+    response = jsonify({"msg": "logout Successful"})
+    unset_jwt_cookies(response)
+    return response
 
 @app.route("/owner_login", methods=['POST'])
 def login_owner():
