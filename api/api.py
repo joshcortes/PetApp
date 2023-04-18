@@ -158,9 +158,9 @@ def add_pet_condition():
     severity = request.json['severity']
     conditon_name = request.json['condition_name']
 
-    cursor.execute('''INSERT INTO Pet_Symptom(condition_id, pet_id, startDate, endDate, severity) 
-                        SELECT condition_id, %s,%s,%s,%s 
-                        FROM Condition 
+    cursor.execute('''INSERT INTO Pet_Condition(condition_id, pet_id, startDate, endDate, severity)
+                        SELECT condition_id, %s, %s, %s, %s 
+                        FROM Conditions 
                         WHERE name = %s''',
                    (pet_id, startDate, endDate, severity, conditon_name))
     
@@ -183,7 +183,7 @@ def add_pet_symptom():
 
     cursor.execute('''INSERT INTO Pet_Symptom(symptom_id, pet_id, startDate, endDate, severity) 
                         SELECT symptom_id, %s,%s,%s,%s 
-                        FROM Symptom 
+                        FROM Symptoms 
                         WHERE name = %s''',
                    (pet_id, startDate, endDate, severity, symptom_name))
     
