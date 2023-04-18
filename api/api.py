@@ -248,4 +248,21 @@ def add_pet():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully removed symptom from pet!"
+    return "Successfully added pet to DB!"
+
+@app.route("/designate_owner", methods=['POST'])
+@jwt_required()
+@doc_required()
+def designate_owner():
+    cursor = mysql.connection.cursor()
+
+    pet_id = request.json['pet_id']
+    owner_id = request.json['owner_id']
+
+    cursor.execute('INSERT INTO Pet_Owner(pet_id, owner_id) VALUES(%s,%s)',
+                   (pet_id,owner_id))
+
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully designated owner of pet!"
