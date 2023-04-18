@@ -62,6 +62,9 @@ loginForm.addEventListener('submit', async () => {
     document.getElementById('pageContents').innerHTML = output;
     return response.json();
   } catch (error) {
+    document.getElementById(
+      'errorMsg'
+    ).innerHTML = `Download error: ${error.message}`;
     console.error(`Download error: ${error.message}`);
   }
 });
