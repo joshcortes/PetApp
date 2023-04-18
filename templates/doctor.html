@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <title>PetApp</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="nav-links">
-            <ul>
-                <li> <a href="./index.html">PetCare</a></li>
-                <li> <a href="./about.html">About Us</a></li>
-                <li> <a href="./login.html">Login</a></li>
-                <li> <a href="./register.html">Register</a></li>
-                <li> <a href="./doctor.html">Doctor</a></li>
-                <li> <a href="./owner.html">Owner</a></li>
-            </ul>
-            </nav>
+      <nav class="nav-links">
+        <ul>
+          <li><a href="./index.html">PetCare</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./register.html">Register</a></li>
+          <li><a href="./doctor.html">Doctor</a></li>
+          <li><a href="./owner.html">Owner</a></li>
+        </ul>
+      </nav>
     </header>
-    <h1>Pets type</h1>
-    <h2>Pet Condition</h2>
-    <p>Treatments for pet</p>
-</body>
+
+    <h6 id="errorMsg"></h6>
+    <article id="pageContents">
+      <div id="loginForm">
+        <h1>Login</h1>
+        <p>Please Enter Username & Password</p>
+        <form action="#"
+          <div class="class-field">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Enter your Username"
+              required
+            />
+          </div>
+          <div class="class-field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="text"
+              placeholder="Enter your Password"
+              required
+            />
+          </div>
+          <div class="field-btn">
+            <input type="submit" value="Login" />
+          </div>
+        </form>
+        <div class="login-register">
+          <span>
+            Haven't registered? <a href="./register.html">Register</a></span
+          >
+        </div>
+      </div>
+    </article>
+
+    <div id="loggedIn">
+      <div class="form-input">
+        <h1>Find Patient Info</h1>
+        <p>Search for patient by name</p>
+        <form action="#">
+          <div class="class-field">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Enter patient name"
+              required
+            />
+          </div>
+          <div class="field-btn">
+            <input type="submit" value="search" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <section id="patient-info">
+      <h1>Pets type</h1>
+      <h2>Pet Condition</h2>
+      <p>Treatments for pet</p>
+    </section>
+
+    <script src="doctor.js"></script>
+  </body>
 </html>
