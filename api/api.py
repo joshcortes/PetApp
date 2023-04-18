@@ -481,8 +481,8 @@ def get_locations():
 
     return data
 
-app.route('/get_pet_symptom_condition')
-@jwt_required()
+@app.route('/get_pet_symptom_condition', methods = ['GET'])
+#@jwt_required()
 def get_pet_symptom_condition():
     '''
         make sure you are sending a dictionary with an array
@@ -494,22 +494,20 @@ def get_pet_symptom_condition():
     all_pet_info = {}
 
     for pet_id in pet_ids:
-        cursor.execute('''SELECT name, affected_part, startDate, endDate, severity 
-                            FROM Conditions
-                            WHERE pet_id = %s''',
-                            (pet_id))
+        cursor.execute('''SELECT C.name, C.description, P.startDate, P.endDate, P.severity 
+                            FROM Conditions C, Pet_Condition P
+                            WHERE P.pet_id = %s AND C.condition_id = P.condition_id''',
+                            (pet_id,))
         conditions = cursor.fetchall()
 
-        cursor.clear_attributes()
 
-        cursor.execute('''SELECT name, affected_part, startDate, endDate, severity 
-                            FROM Symptoms
-                            WHERE pet_id = %s''',
-                            (pet_id))
+        cursor.execute('''SELECT S.name, S.affected_part, P.startDate, P.endDate, P.severity 
+                            FROM Symptoms S, Pet_Symptom P
+                            WHERE S.symptom_id=P.symptom_id AND pet_id = %s''',
+                            (pet_id,))
         
         symptoms = cursor.fetchall()
 
-        cursor.clear_attributes()
 
         con_symp_dict = {'conditions': conditions,
                          'symptoms': symptoms}
