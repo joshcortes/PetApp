@@ -47,6 +47,7 @@ h3 {
   width: fit-content;
   border-radius: 5px;
 }
+
 .nav-links {
   font-size: 70px;
   font-weight: bold;
@@ -78,4 +79,7 @@ h3 {
   height: 50%;
   width: 50%;
   border-radius: 10px;
+}
+.form-input {
+  background-color: rgba(0, 0, 0, 0.5);
 }

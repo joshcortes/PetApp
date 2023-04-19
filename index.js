@@ -1,22 +1,22 @@
 let locations = [];
 let productOptions = ``;
 
-const fetchProducts = () => {
-  fetch('http://localhost:5000/get_locations')
-    .then((response) => (productResults = response.json()))
-    .then(
-      productResults.forEach((product) => {
-        productOptions += (
-          <option value='${product.product_id}'>${product.name}</option>
-        );
-      })
-    );
-};
+// const fetchProducts = () => {
+//   fetch('http://localhost:5000/get_locations')
+//     .then((response) => (productResults = response.json()))
+//     .then(
+//       productResults.forEach((product) => {
+//         productOptions += (
+//           <option value='${product.product_id}'>${product.name}</option>
+//         );
+//       })
+//     );
+// };
 
-async () => {
-  const response = await fetch('http://localhost:5000/get_locations');
-  locations = await response.json();
-};
+// async () => {
+//   const response = await fetch('http://localhost:5000/get_locations');
+//   locations = await response.json();
+// };
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary('maps');
@@ -26,17 +26,17 @@ async function initMap() {
     zoom: 12,
   });
 
-  fetch('http://localhost:5000/get_locations')
-    .then((response) => response.json())
-    .then((locations) => {
-      locations.forEach((location) => {
-        let marker = new google.maps.Marker({
-          position: { lat: location.lat, lng: location.lng },
-          map: myMap,
-          title: location.name,
-        });
-      });
-    });
+  // fetch('http://localhost:5000/get_locations')
+  //   .then((response) => response.json())
+  //   .then((locations) => {
+  //     locations.forEach((location) => {
+  //       let marker = new google.maps.Marker({
+  //         position: { lat: location.lat, lng: location.lng },
+  //         map: myMap,
+  //         title: location.name,
+  //       });
+  //     });
+  //   });
   marker.setMap(myMap);
 }
 // const marker = new google.maps.Marker({
