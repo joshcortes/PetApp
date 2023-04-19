@@ -35,22 +35,8 @@ loginForm.addEventListener('submit', async () => {
   </tr>
 </table>`;
     document.getElementById('pageContents').innerHTML = output;
-    console.log(result.pet_ids);
-    
-    let pet_ids = {"pet_ids": result.pet_ids};
-    console.log(pet_ids)
-    const pet_response = await fetch((url = 'http://localhost:5000/get_pet_symptom_condition'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-      body: JSON.stringify(pet_ids),
-    });
 
-    const pet_data = await pet_response.json();
-    console.log(pet_data)
-    /*
+    
     let doctorData = { user_type: 'doctor_id', user_id: result.doctor_id };
     // fetch pet info related to doctor with /pet_info
     const petResponse = await fetch((url = 'http://localhost:5000/pet_info'), {
@@ -64,6 +50,76 @@ loginForm.addEventListener('submit', async () => {
     const petResult = await petResponse.json();
     console.log(petResult);
 
+   
+
+    let pet_ids = {"pet_ids": result.pet_ids};
+    const pet_response = await fetch((url = 'http://localhost:5000/get_pet_symptom_condition'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: JSON.stringify(pet_ids),
+    });
+
+    const pet_data = await pet_response.json();
+
+    let pet_ids_arr = pet_ids.pet_ids;
+
+    let petList = `<h1>Current Patients</h1>`;
+
+    for (let i = 0; i < pet_ids_arr.length; i++) {
+      let curr_pet_id = pet_ids_arr[i];
+      let pet_conditions = pet_data[curr_pet_id].conditions;
+      let pet_symptoms = pet_data[curr_pet_id].symptoms;
+
+      let current_pet = petResult[i];
+      console.log(current_pet);
+      petList += `<h2> ${current_pet.name} ${current_pet.breed_id} ${current_pet.age} ${current_pet.sex} <h2>`
+
+      for (let j = 0; j < pet_conditions.length; j++) {
+        let condition = pet_conditions[j];
+        let start_date = '';
+        let end_date = '';
+        if (condition.startDate != null) {
+          start_date = condition.startDate.substring(0,16);
+        } else {
+          start_date = condition.startDate;
+        }
+
+        if (condition.endDate != null) {
+          end_date = condition.endDate.substring(0,16);
+        } else {
+          end_date = condition.endDate
+        }
+        
+        
+        petList += `<h3> ${condition.name} ${start_date} ${end_date} ${condition.severity} <h3>`
+      }
+
+      for (let k = 0; k < pet_symptoms.length; k++) {
+        let symptom = pet_symptoms[k];
+        start_date = '';
+        end_date = '';
+        if (symptom.startDate != null) {
+          start_date = symptom.startDate.substring(0,16);
+        } else {
+          start_date = symptom.startDate;
+        }
+
+        if (symptom.endDate != null) {
+          end_date = symptom.endDate.substring(0,16);
+        } else {
+          end_date = symptom.endDate
+        }
+        console.log(start_date);
+        petList += `<h3> ${symptom.name} ${start_date} ${end_date} ${symptom.severity} ${symptom.affected_part} <h3>`
+      }
+    }
+    document.getElementById('patients').innerHTML = petList;
+
+
+     /*
     // output table of pet info in the HTML DOM
     let petList = `<h1>Current Patients</h1>`;
     petResult.forEach((pet) => {
@@ -71,6 +127,10 @@ loginForm.addEventListener('submit', async () => {
     });
     document.getElementById('patients').innerHTML = petList;
     */
+    
+    
+    
+    
   } catch (error) {
     document.getElementById(
       'errorMsg'
@@ -79,6 +139,3 @@ loginForm.addEventListener('submit', async () => {
   }
   
 });
-// doc_login
-
-//
