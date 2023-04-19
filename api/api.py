@@ -362,7 +362,7 @@ def add_pet():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully added pet to DB!"
+    return jsonify("Successfully added pet to DB!")
 
 
 @app.route("/designate_owner", methods=["POST"])
@@ -510,7 +510,7 @@ def get_likely_condition():
     return response
 
 
-@app.route("/search_by_x", methods=["GET"])
+@app.route("/search_by_x", methods=["POST"])
 @jwt_required()
 def search_by_x():
     """
@@ -521,9 +521,9 @@ def search_by_x():
     """
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    table = request.json("table")
-    what_to_search_for = request.json("what_to_search_for")
-    specified_search_item = request.json("specified_search_item")
+    table = request.json["table"]
+    what_to_search_for = request.json["what_to_search_for"]
+    specified_search_item = request.json["specified_search_item"]
 
     cursor.execute(
         "SELECT * FROM %s WHERE %s = %s",
@@ -536,6 +536,22 @@ def search_by_x():
     data = cursor.fetchall()
 
     return data
+
+@app.route("/get_breeds", methods=["GET"])
+@jwt_required()
+def get_breeds():
+    """
+    gets all breeds
+    """
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute(
+        "SELECT * FROM Breeds_species",
+    )
+
+    data = cursor.fetchall()
+
+    return jsonify(data)
 
 
 @app.route("/get_product_condition", methods=["GET"])
