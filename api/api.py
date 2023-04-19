@@ -299,6 +299,30 @@ def update_condition():
     return "Successfully updated the condition end date!"
 
 
+@app.route("/update_symptom", methods=["POST"])
+# @jwt_required()
+# @doc_required()
+def update_symptom():
+    cursor = mysql.connection.cursor()
+
+    severity = request.json["severity"]
+    end_date = request.json["endDate"]
+    start_date = request.json["startDate"]
+    symptom_id = request.json["symptom_id"]
+    pet_id = request.json["pet_id"]
+
+    cursor.execute(
+        """UPDATE Pet_Symptom 
+                        SET startDate = %s, endDate = %s, severity = %s
+                        WHERE symptom_id = %s AND pet_id = %s""",
+        (start_date, end_date, severity, symptom_id, pet_id),
+    )
+    cursor.connection.commit()
+    cursor.close()
+
+    return "Successfully updated the condition end date!"
+
+
 @app.route("/remove_pet_conditon", methods=["POST"])
 @jwt_required()
 @doc_required()
@@ -616,7 +640,7 @@ def get_pet_symptom_condition():
         conditions = cursor.fetchall()
 
         cursor.execute(
-            """SELECT S.name, S.affected_part, P.startDate, P.endDate, P.severity 
+            """SELECT S. symptom_id, S.name, S.affected_part, P.startDate, P.endDate, P.severity 
                             FROM Symptoms S, Pet_Symptom P
                             WHERE S.symptom_id=P.symptom_id AND pet_id = %s""",
             (pet_id,),

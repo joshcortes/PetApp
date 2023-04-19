@@ -80,6 +80,8 @@ loginForm.addEventListener('submit', async () => {
         let condition = pet_conditions[j];
         let start_date = '';
         let end_date = '';
+        let form_id = `updateForm${current_pet.pet_id}${condition.condition_id}`;
+        console.log(form_id);
         if (condition.startDate != null) {
           start_date = condition.startDate.substring(0, 16);
         } else {
@@ -96,9 +98,9 @@ loginForm.addEventListener('submit', async () => {
         <span>Condition:</span> ${condition.name}, 
         ${condition.severity} 
         <span>Start: </span>${start_date} 
-        <span>End: </span>${end_date}<div id="endForm"><button id="end" 
-        onclick="endForm(${condition.condition_id},
-        ${current_pet.pet_id})">Update Condition</button></div></h3>`;
+        <span>End: </span>${end_date}<div id="${form_id}">
+        <button id="end" onclick="updateForm(${condition.condition_id},
+        ${current_pet.pet_id},${form_id})">Update Condition</button></div></h3>`;
         console.log(condition.condition_id);
       }
 
@@ -106,6 +108,8 @@ loginForm.addEventListener('submit', async () => {
         let symptom = pet_symptoms[k];
         start_date = '';
         end_date = '';
+        let form_id = `updateForm${current_pet.pet_id}${symptom.symptom_id}`;
+
         if (symptom.startDate != null) {
           start_date = symptom.startDate.substring(0, 16);
         } else {
@@ -121,7 +125,9 @@ loginForm.addEventListener('submit', async () => {
         petList += `<h3><span>Symptom: </span>${symptom.name} 
         ${symptom.severity}
         <span>Start: </span>${start_date} 
-        <span>End: </span>${end_date}<h3>`;
+        <span>End: </span>${end_date}<div id="${form_id}">
+        <button id="end" onclick="updateForm(${symptom.symptom_id},
+        ${current_pet.pet_id},'${form_id}')">Update Symptom</button></div></h3>`;
       }
     }
     document.getElementById('patients').innerHTML = petList;
@@ -245,10 +251,10 @@ function addPet() {
   });
 }
 
-function endForm(condition_id, pet_id) {
-  const originalContent = document.getElementById('endForm').innerHTML;
-
-  document.getElementById('endForm').innerHTML = `
+function updateForm(consym_id, pet_id, formString) {
+  console.log(formString);
+  const originalContent = document.getElementById(formString).innerHTML;
+  document.getElementById(formString).innerHTML = `
   <form class=docDataEntry id="condUpdate" onsubmit= >
     <label for="severity">Severity: </label>
     <select
@@ -276,21 +282,26 @@ function endForm(condition_id, pet_id) {
         <button type="button" id="back-btn">Back</button>
       </div>
   </form>`;
-  console.log(condition_id, pet_id);
+  console.log(consym_id, pet_id);
   const condUpdate = document.getElementById('condUpdate');
-
+  let backendurl = '';
+  if (consym_id >= 6000) {
+    backendurl += 'http://localhost:5000/update_symptom';
+  } else {
+    backendurl += 'http://localhost:5000/update_condition';
+  }
   condUpdate.addEventListener('submit', function (e) {
     e.preventDefault();
     const updateData = {
       severity: document.getElementById('severity').value,
       startDate: document.getElementById('startDate').value,
       endDate: document.getElementById('endDate').value,
-      condition_id: condition_id,
+      condition_id: consym_id,
       pet_id: pet_id,
     };
     console.log(updateData);
     try {
-      fetch((url = 'http://localhost:5000/update_condition'), {
+      fetch((url = backendurl), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -307,6 +318,6 @@ function endForm(condition_id, pet_id) {
   const backBtn = document.getElementById('back-btn');
   backBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    document.getElementById('endForm').innerHTML = originalContent;
+    document.getElementById(form_id).innerHTML = originalContent;
   });
 }
