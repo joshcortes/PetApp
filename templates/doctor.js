@@ -246,6 +246,8 @@ function addPet() {
 }
 
 function endForm(condition_id, pet_id) {
+  const originalContent = document.getElementById('endForm').innerHTML;
+
   document.getElementById('endForm').innerHTML = `
   <form class=docDataEntry id="condUpdate" onsubmit= >
     <label for="severity">Severity: </label>
@@ -271,6 +273,7 @@ function endForm(condition_id, pet_id) {
         />
         <div class="field-btn">
         <input type="submit" id="update-btn" value="Submit Update" />
+        <button type="button" id="back-btn">Back</button>
       </div>
   </form>`;
   console.log(condition_id, pet_id);
@@ -300,5 +303,10 @@ function endForm(condition_id, pet_id) {
       ).innerHTML = `Download error: ${error.message}`;
       console.error(`Download error: ${error.message}`);
     }
+  });
+  const backBtn = document.getElementById('back-btn');
+  backBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('endForm').innerHTML = originalContent;
   });
 }
