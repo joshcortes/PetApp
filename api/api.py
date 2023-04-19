@@ -68,7 +68,6 @@ def logout():
 
 @app.route("/owner_login", methods=["POST"])
 def login_owner():
-    
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
@@ -276,23 +275,24 @@ def add_pet_symptom():
     return "Successfully added symptom to db!"
 
 
-@app.route("/update_condition_end_date", methods=["POST"])
-@jwt_required()
-@doc_required()
-def update_condition_end_date():
+@app.route("/update_condition", methods=["POST"])
+# @jwt_required()
+# @doc_required()
+def update_condition():
     cursor = mysql.connection.cursor()
 
-    end_date = request.json["end_date"]
-    symptom_id = request.json["symptom_id"]
+    severity = request.json["severity"]
+    end_date = request.json["endDate"]
+    start_date = request.json["startDate"]
+    condition_id = request.json["condition_id"]
     pet_id = request.json["pet_id"]
 
     cursor.execute(
-        """UPDATE Pet_Symptom 
-                        SET endDate = %s 
-                        WHERE symptom_id = %s AND pet_id = %s""",
-        (end_date, symptom_id, pet_id),
+        """UPDATE Pet_Condition 
+                        SET startDate = %s, endDate = %s, severity = %s
+                        WHERE condition_id = %s AND pet_id = %s""",
+        (start_date, end_date, severity, condition_id, pet_id),
     )
-
     cursor.connection.commit()
     cursor.close()
 
@@ -330,7 +330,7 @@ def remove_pet_symptom():
     pet_id = request.json["pet_id"]
 
     cursor.execute(
-        """DELETE FROM Pet_Condition 
+        """DELETE FROM Pet_Symptom 
                         WHERE symptom_id = %s AND pet_id = %s""",
         (symptom_id, pet_id),
     )
@@ -537,6 +537,7 @@ def search_by_x():
 
     return data
 
+
 @app.route("/get_breeds", methods=["GET"])
 @jwt_required()
 def get_breeds():
@@ -574,7 +575,7 @@ def get_product_condition():
     return data
 
 
-@app.route("/get_locations", methods=["GET"])
+@app.route("/get_product_locations", methods=["GET"])
 @jwt_required()
 def get_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -594,7 +595,7 @@ def get_locations():
 
 
 @app.route("/get_pet_symptom_condition", methods=["POST"])
-#@jwt_required()
+# @jwt_required()
 def get_pet_symptom_condition():
     """
     make sure you are sending a dictionary with an array
@@ -607,7 +608,7 @@ def get_pet_symptom_condition():
 
     for pet_id in pet_ids:
         cursor.execute(
-            """SELECT C.name, C.description, P.startDate, P.endDate, P.severity 
+            """SELECT C.condition_id, C.name, C.description, P.startDate, P.endDate, P.severity 
                             FROM Conditions C, Pet_Condition P
                             WHERE P.pet_id = %s AND C.condition_id = P.condition_id""",
             (pet_id,),
@@ -632,3 +633,25 @@ def get_pet_symptom_condition():
     response = all_pet_info
 
     return response
+
+
+@app.route("/get_all_locations", methods=["GET"])
+def get_all_locations():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute("""SELECT * FROM Locations""")
+
+    locations = cursor.fetchall()
+
+    return jsonify(locations)
+
+
+@app.route("/get_all_products", methods=["GET"])
+def get_all_products():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute("""SELECT product_id, name FROM Products""")
+
+    products = cursor.fetchall()
+
+    return jsonify(products)

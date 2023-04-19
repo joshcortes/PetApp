@@ -1,12 +1,22 @@
-let map;
-
-async function initMap() {
-  const { Map } = await google.maps.importLibrary('maps');
-
-  map = new Map(document.getElementById('map'), {
-    center: { lat: 33.74850123320353, lng: -84.3878613378074 },
-    zoom: 12,
+let locations = [];
+let productResult = [];
+// let options = document.getElementById('products');
+(async () => {
+  const productResponse = await fetch(
+    (url = 'http://localhost:5000/get_all_products'),
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    }
+  );
+  productResult = await productResponse.json();
+  console.log(productResult);
+  let productOptions = '';
+  productResult.forEach((product) => {
+    productOptions += `<option value="${product.product_id}">${product.name}</option>`;
   });
-}
-
-initMap();
+  document.getElementById('products').innerHTML = productOptions;
+})();
