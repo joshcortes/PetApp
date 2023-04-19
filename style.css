@@ -47,6 +47,9 @@ h3 {
   width: fit-content;
   border-radius: 5px;
 }
+h3 span {
+  font-size: 36px;
+}
 
 .nav-links {
   font-size: 70px;
@@ -85,4 +88,7 @@ h3 {
 }
 #products {
   width: 30%;
+}
+.docDataEntry {
+  font-size: 24px;
 }

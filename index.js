@@ -19,5 +19,4 @@ let productResult = [];
     productOptions += `<option value="${product.product_id}">${product.name}</option>`;
   });
   document.getElementById('products').innerHTML = productOptions;
-  console.log(productOptions);
 })();
