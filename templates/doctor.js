@@ -98,7 +98,7 @@ loginForm.addEventListener('submit', async () => {
         <span>Start: </span>${start_date} 
         <span>End: </span>${end_date}<div id="endForm"><button id="end" 
         onclick="endForm(${condition.condition_id},
-        ${current_pet.pet_id})">Enter End Date</button></div></h3>`;
+        ${current_pet.pet_id})">Update Condition</button></div></h3>`;
         console.log(condition.condition_id);
       }
 
@@ -270,7 +270,8 @@ function endForm(condition_id, pet_id) {
           placeholder="YYYY-MM-DD"
         />
         <div class="field-btn">
-        <input type="submit" id="endDate-btn" value="changeDate" />
+        <input type="submit" id="update-btn" value="Submit Update" />
+        <button>Back</button>
       </div>
   </form>`;
   console.log(condition_id, pet_id);
