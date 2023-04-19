@@ -35,7 +35,22 @@ loginForm.addEventListener('submit', async () => {
   </tr>
 </table>`;
     document.getElementById('pageContents').innerHTML = output;
+    console.log(result.pet_ids);
+    
+    let pet_ids = {"pet_ids": result.pet_ids};
+    console.log(pet_ids)
+    const pet_response = await fetch((url = 'http://localhost:5000/get_pet_symptom_condition'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: JSON.stringify(pet_ids),
+    });
 
+    const pet_data = await pet_response.json();
+    console.log(pet_data)
+    /*
     let doctorData = { user_type: 'doctor_id', user_id: result.doctor_id };
     // fetch pet info related to doctor with /pet_info
     const petResponse = await fetch((url = 'http://localhost:5000/pet_info'), {
@@ -55,12 +70,14 @@ loginForm.addEventListener('submit', async () => {
       petList += `<h2>${pet.name}  ${pet.breed_id} ${pet.age} ${pet.sex}</h2>`;
     });
     document.getElementById('patients').innerHTML = petList;
+    */
   } catch (error) {
     document.getElementById(
       'errorMsg'
     ).innerHTML = `Download error: ${error.message}`;
     console.error(`Download error: ${error.message}`);
   }
+  
 });
 // doc_login
 
