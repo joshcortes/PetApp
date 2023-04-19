@@ -62,7 +62,6 @@ loginForm.addEventListener('submit', async () => {
     console.error(`Download error: ${error.message}`);
   }
 });
-
 // doc_login
 
 //

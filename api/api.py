@@ -60,7 +60,6 @@ def owner_required():
 
 
 @app.route("/logout", methods=["POST"])
-@jwt_required()
 def logout():
     response = jsonify({"msg": "logout Successful"})
     unset_jwt_cookies(response)

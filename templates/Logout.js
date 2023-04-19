@@ -1,24 +1,18 @@
-logoutButton = document.getElementById('logout')
-import axios from "axios"
-
-logoutButton.addEventListener('submit', async () => {
+document.getElementById("logout-btn").addEventListener("click", async () => {
     try {
-        axios({
+        const response = await fetch((url = 'http://localhost:5000/logout'), {
             method: 'POST',
-            url: '/logout',
-        }).then((response) => {
-            localStorage.removeItem('token');
-        }).catch((error) => {
-            if (error.response) {
-                console.log(error.response);
-                console.log(error.response.status);
-                console.log(error.response.headers)
-            }
-        });
-    } catch (error) {
+            headers: {
+                'Content-Type': 'application/json',
+      },
+    });
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        window.location.href = "./index.html";
+    }catch (error) {
         document.getElementById(
-            'errorMsg'
-            ).innerHTML = `Download error: ${error.message}`;
+          'errorMsg'
+        ).innerHTML = `Download error: ${error.message}`;
         console.error(`Download error: ${error.message}`);
-    } 
+    }
 });
