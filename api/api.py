@@ -68,7 +68,6 @@ def logout():
 
 @app.route("/owner_login", methods=["POST"])
 def login_owner():
-    
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
@@ -537,6 +536,7 @@ def search_by_x():
 
     return data
 
+
 @app.route("/get_breeds", methods=["GET"])
 @jwt_required()
 def get_breeds():
@@ -574,7 +574,7 @@ def get_product_condition():
     return data
 
 
-@app.route("/get_locations", methods=["GET"])
+@app.route("/get_product_locations", methods=["GET"])
 @jwt_required()
 def get_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -594,7 +594,7 @@ def get_locations():
 
 
 @app.route("/get_pet_symptom_condition", methods=["POST"])
-#@jwt_required()
+# @jwt_required()
 def get_pet_symptom_condition():
     """
     make sure you are sending a dictionary with an array
@@ -632,3 +632,25 @@ def get_pet_symptom_condition():
     response = all_pet_info
 
     return response
+
+
+@app.route("/get_all_locations", methods=["GET"])
+def get_all_locations():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute("""SELECT * FROM Locations""")
+
+    locations = cursor.fetchall()
+
+    return jsonify(locations)
+
+
+@app.route("/get_all_products", methods=["GET"])
+def get_all_products():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute("""SELECT product_id, name FROM Products""")
+
+    products = cursor.fetchall()
+
+    return jsonify(products)

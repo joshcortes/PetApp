@@ -83,3 +83,6 @@ h3 {
 .form-input {
   background-color: rgba(0, 0, 0, 0.5);
 }
+#products {
+  width: 30%;
+}
