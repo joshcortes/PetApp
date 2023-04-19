@@ -68,6 +68,7 @@ def logout():
 
 @app.route("/owner_login", methods=["POST"])
 def login_owner():
+    
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
@@ -102,6 +103,7 @@ def login_owner():
 
 @app.route("/doc_login", methods=["POST"])
 def login_doc():
+    print("did somethign")
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
@@ -575,8 +577,8 @@ def get_locations():
     return data
 
 
-@app.route("/get_pet_symptom_condition", methods=["GET"])
-# @jwt_required()
+@app.route("/get_pet_symptom_condition", methods=["POST"])
+#@jwt_required()
 def get_pet_symptom_condition():
     """
     make sure you are sending a dictionary with an array
@@ -584,6 +586,7 @@ def get_pet_symptom_condition():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     pet_ids = request.json["pet_ids"]
+    print(pet_ids)
     all_pet_info = {}
 
     for pet_id in pet_ids:
@@ -610,4 +613,6 @@ def get_pet_symptom_condition():
 
     cursor.close()
 
-    return all_pet_info
+    response = all_pet_info
+
+    return response
