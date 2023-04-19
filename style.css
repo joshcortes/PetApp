@@ -16,6 +16,7 @@ body {
   height: 100vh;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 header {
   display: flex;
@@ -25,6 +26,26 @@ header {
   top: 0;
   left: 0;
   background: rgba(79, 105, 102, 0.2);
+}
+h1 {
+  margin: 10px;
+}
+h2 {
+  font-size: 36px;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  border-radius: 5px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: normal;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: fit-content;
+  border-radius: 5px;
 }
 .nav-links {
   font-size: 70px;
