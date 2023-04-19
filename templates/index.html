@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>PetApp</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="nav-links">
-            <ul>
-                <li> <a href="./index.html">PetCare</a></li>
-                <li> <a href="./about.html">About Us</a></li>
-                <li> <a href="./login.html">Login</a></li>
-                <li> <a href="./register.html">Register</a></li>
-                <li> <a href="./doctor.html">Doctor</a></li>
-                <li> <a href="./owner.html">Owner</a></li>
-            </ul>
-            </nav>
+      <nav class="nav-links">
+        <ul>
+          <li><a href="./index.html">PetCare</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./login.html">Login</a></li>
+          <li><a href="./register.html">Register</a></li>
+          <li><a href="./doctor.html">Doctor</a></li>
+          <li><a href="./owner.html">Owner</a></li>
+        </ul>
+      </nav>
     </header>
-    <h1>Create an Account today & Search for daily Products that will help your Pets!</h1>
+    <h1>
+      Create an Account today & Search for daily Products that will help your
+      Pets!
+    </h1>
     <p>Search for Products before you make Your commute!</p>
-</body>
+    <div id="map"></div>
+    <script src="../index.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
+    ></script>
+  </body>
 </html>

@@ -54,6 +54,7 @@ header {
   cursor: pointer;
 }
 #map {
+  margin-top: 1rem;
   height: 50%;
   width: 50%;
   border-radius: 10px;
