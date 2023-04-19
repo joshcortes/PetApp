@@ -75,7 +75,7 @@ loginForm.addEventListener('submit', async () => {
 
       let current_pet = petResult[i];
       console.log(current_pet);
-      petList += `<h2> ${current_pet.name} ${current_pet.breed_id} ${current_pet.age} ${current_pet.sex} <h2>`;
+      petList += `<h2> ${current_pet.name} ${current_pet.breed_id} ${current_pet.age} ${current_pet.sex} </h2>`;
 
       for (let j = 0; j < pet_conditions.length; j++) {
         let condition = pet_conditions[j];
