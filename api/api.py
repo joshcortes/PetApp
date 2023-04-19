@@ -608,3 +608,14 @@ def get_locations():
     locations = cursor.fetchall()
 
     return jsonify(locations)
+
+
+@app.route("/get_products", methods=["GET"])
+def get_products():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+    cursor.execute("""SELECT product_id, name FROM Products""")
+
+    locations = cursor.fetchall()
+
+    return jsonify(locations)
