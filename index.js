@@ -1,4 +1,18 @@
-const locations = {};
+let locations = [];
+let productOptions = ``;
+
+const fetchProducts = () => {
+  fetch('http://localhost:5000/get_locations')
+    .then((response) => (productResults = response.json()))
+    .then(
+      productResults.forEach((product) => {
+        productOptions += (
+          <option value='${product.product_id}'>${product.name}</option>
+        );
+      })
+    );
+};
+
 async () => {
   const response = await fetch('http://localhost:5000/get_locations');
   locations = await response.json();
@@ -23,11 +37,11 @@ async function initMap() {
         });
       });
     });
+  marker.setMap(myMap);
 }
 // const marker = new google.maps.Marker({
 //   position: { lat: 33.75148340214221, lng: -84.32222888974691 },
 //   title: 'Feed & Seed Pet Supply',
 //   myMap,
 // });
-marker.setMap(myMap);
 initMap();
