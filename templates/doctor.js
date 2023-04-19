@@ -129,7 +129,7 @@ loginForm.addEventListener('submit', async () => {
   options.innerHTML = breedOptions; 
 
   addPet();
-  
+
   } catch (error) {
     document.getElementById(
       'errorMsg'
@@ -153,7 +153,7 @@ function addPet(){
       age: age,
       sex: sex,
       insurance: insurance,
-      breed: breed
+      breed_id: breed
     };
     console.log(data);
     try {

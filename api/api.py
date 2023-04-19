@@ -360,7 +360,7 @@ def add_pet():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully added pet to DB!"
+    return jsonify("Successfully added pet to DB!")
 
 
 @app.route("/designate_owner", methods=["POST"])
