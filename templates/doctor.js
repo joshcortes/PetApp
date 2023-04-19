@@ -59,11 +59,11 @@ loginForm.addEventListener('submit', async () => {
     document.getElementById('addPet').innerHTML = `
     <div class="form-input">
     <h1>Add a Pet</h1>
-    <form action="#">
+    <form action="#" id="addPetForm">
       <div class="class-field">
-        <label for="name">Name</label>
+        <label for="petname">Name</label>
         <input
-          id="name"
+          id="petname"
           type="text"
           placeholder="Enter pet name"
           required
@@ -98,16 +98,6 @@ loginForm.addEventListener('submit', async () => {
         />
       </div>
       <div class="class-field">
-        <label for="sex">Sex</label>
-        <select
-          id="sex"
-          required
-        />
-          <option value="MALE">Male</option>
-          <option value="FEMALE">Female</option>
-        </select>
-      </div>
-      <div class="class-field">
         <label for="breed">Breed</label>
         <select
           id="breed"
@@ -116,7 +106,7 @@ loginForm.addEventListener('submit', async () => {
         </select>
       </div>
       <div class="field-btn">
-        <input type="submit" value="search" />
+        <input type="submit" id="addPet-btn" value="add" />
       </div>
     </form>
   </div>`;
@@ -136,7 +126,10 @@ loginForm.addEventListener('submit', async () => {
     breedOptions += `<option value="${breed.breed_id}">${breed.name}</option>`;
   });
 
-  options.innerHTML = breedOptions;
+  options.innerHTML = breedOptions; 
+
+  addPet();
+  
   } catch (error) {
     document.getElementById(
       'errorMsg'
@@ -147,39 +140,39 @@ loginForm.addEventListener('submit', async () => {
 // doc_login
 
 //
-if(document.getElementById('addPet')){
-  let options = document.getElementById('addPet');
-  async () => {
-    let breedRequest = {
-      table: "Breeds_species",
-      what_to_search_for: "name",
-      specified_search_item: "'%'"
+function addPet(){
+
+  addPetForm.addEventListener("submit", async () => {
+    let name = document.getElementById("petname").value;
+    let age = document.getElementById("age").value;
+    let sex = document.getElementById("sex").value;
+    let insurance = document.getElementById("insurance").value;
+    let breed = document.getElementById("breed").value;   
+    const data = {
+      name: name,
+      age: age,
+      sex: sex,
+      insurance: insurance,
+      breed: breed
     };
+    console.log(data);
     try {
-      
-    let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
-      <tr>
-        <td>Email:</td>
-        <td>${result.email}</td>
-      </tr>
-      <tr>
-        <td>Phone number:</td>
-        <td>${result.phone_number}</td>
-      </tr>
-      <tr>
-        <td>Address:</td>
-        <td>${result.address}</td>
-      </tr>
-      <tr>
-        <td>License number:</td>
-        <td>${result.license_number}</td>
-      </tr>
-    </table>`;
+      const response = await fetch((url = 'http://localhost:5000/add_pet'), {
+        method: 'POST',
+         headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+      });
+      const result = await response.json();
+      console.log(result);
     } catch (error) {
       document.getElementById(
         'errorMsg'
       ).innerHTML = `Download error: ${error.message}`;
       console.error(`Download error: ${error.message}`);
+      }
     }
-  }
+  )
 }
