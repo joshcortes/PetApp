@@ -55,6 +55,88 @@ loginForm.addEventListener('submit', async () => {
       petList += `<h2>${pet.name}  ${pet.breed_id} ${pet.age} ${pet.sex}</h2>`;
     });
     document.getElementById('patients').innerHTML = petList;
+
+    document.getElementById('addPet').innerHTML = `
+    <div class="form-input">
+    <h1>Add a Pet</h1>
+    <form action="#">
+      <div class="class-field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Enter pet name"
+          required
+        />
+      </div>
+      <div class="class-field">
+        <label for="age">Age</label>
+        <input
+          id="age"
+          type="text"
+          placeholder="Enter pet age"
+          required
+        />
+      </div>
+      <div class="class-field">
+        <label for="sex">Sex</label>
+        <select
+          id="sex"
+          required
+        />
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+      </div>
+      <div class="class-field">
+        <label for="insurance">Insurance</label>
+        <input
+          id="insurance"
+          type="text"
+          placeholder="Enter pet insurance"
+          required
+        />
+      </div>
+      <div class="class-field">
+        <label for="sex">Sex</label>
+        <select
+          id="sex"
+          required
+        />
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+      </div>
+      <div class="class-field">
+        <label for="breed">Breed</label>
+        <select
+          id="breed"
+          required
+        />
+        </select>
+      </div>
+      <div class="field-btn">
+        <input type="submit" value="search" />
+      </div>
+    </form>
+  </div>`;
+
+  let options = document.getElementById('breed');
+  const breedResponse = await fetch((url = 'http://localhost:5000/get_breeds'), {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  });
+  const breedResult = await breedResponse.json();
+  console.log(breedResult);
+  let breedOptions = "";
+  breedResult.forEach((breed) => {
+    breedOptions += `<option value="${breed.breed_id}">${breed.name}</option>`;
+  });
+
+  options.innerHTML = breedOptions;
   } catch (error) {
     document.getElementById(
       'errorMsg'
@@ -65,3 +147,39 @@ loginForm.addEventListener('submit', async () => {
 // doc_login
 
 //
+if(document.getElementById('addPet')){
+  let options = document.getElementById('addPet');
+  async () => {
+    let breedRequest = {
+      table: "Breeds_species",
+      what_to_search_for: "name",
+      specified_search_item: "'%'"
+    };
+    try {
+      
+    let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
+      <tr>
+        <td>Email:</td>
+        <td>${result.email}</td>
+      </tr>
+      <tr>
+        <td>Phone number:</td>
+        <td>${result.phone_number}</td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td>${result.address}</td>
+      </tr>
+      <tr>
+        <td>License number:</td>
+        <td>${result.license_number}</td>
+      </tr>
+    </table>`;
+    } catch (error) {
+      document.getElementById(
+        'errorMsg'
+      ).innerHTML = `Download error: ${error.message}`;
+      console.error(`Download error: ${error.message}`);
+    }
+  }
+}
