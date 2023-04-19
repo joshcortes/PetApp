@@ -271,7 +271,6 @@ function endForm(condition_id, pet_id) {
         />
         <div class="field-btn">
         <input type="submit" id="update-btn" value="Submit Update" />
-        <button>Back</button>
       </div>
   </form>`;
   console.log(condition_id, pet_id);
