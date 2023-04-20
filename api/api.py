@@ -712,7 +712,7 @@ def get_all_products():
 
     return jsonify(products)
 
-@app.route("/delete_pet")
+@app.route("/delete_pet", methods=["POST"])
 def delete_pet():
     cursor = mysql.connection.cursor()
     pet_id = request.json['pet_id']
@@ -720,7 +720,16 @@ def delete_pet():
                    (pet_id,))
     mysql.connection.commit()
     cursor.close()
-    
+
     return "Successfully deleted user!"
 
-    
+@app.route("/get_pet_by_x", methods=['POST'])
+def get_pet_by_x():
+    cursor = mysql.connection.cursor()
+    attribute = request.json['attribute']
+    pet_attribute = request.json['pet_attribute']
+    cursor.execute('SELECT * FROM Pets WHERE %s = %s',
+                   (attribute, pet_attribute))
+    pets = cursor.fetchall(MySQLdb.cursors.DictCursor)
+
+    return jsonify(pets)
