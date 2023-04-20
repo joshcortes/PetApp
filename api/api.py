@@ -601,6 +601,7 @@ def search_by_x():
 
     return jsonify(data)
 
+
 @app.route("/get_breeds", methods=["GET"])
 @jwt_required()
 def get_breeds():
@@ -639,7 +640,7 @@ def get_product_condition():
 
 
 @app.route("/get_product_locations", methods=["GET", "POST"])
-def get_locations():
+def get_product_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     product_id = request.json["product_id"]
@@ -722,21 +723,21 @@ def get_all_products():
 @app.route("/delete_pet", methods=["POST"])
 def delete_pet():
     cursor = mysql.connection.cursor()
-    pet_id = request.json['pet_id']
-    cursor.execute('DELETE FROM Pets WHERE pet_id = %s',
-                   (pet_id,))
+    pet_id = request.json["pet_id"]
+    cursor.execute("DELETE FROM Pets WHERE pet_id = %s", (pet_id,))
     mysql.connection.commit()
     cursor.close()
 
     return jsonify("Successfully deleted pet!")
 
-@app.route("/get_pet_by_x", methods=['POST'])
+
+@app.route("/get_pet_by_x", methods=["POST"])
 def get_pet_by_x():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    attribute = request.json['attribute']
-    pet_attribute = request.json['pet_attribute']
-    querey = 'Select * FROM Pets WHERE ' + attribute +' = %s'
-    cursor.execute(querey,(pet_attribute,))
+    attribute = request.json["attribute"]
+    pet_attribute = request.json["pet_attribute"]
+    querey = "Select * FROM Pets WHERE " + attribute + " = %s"
+    cursor.execute(querey, (pet_attribute,))
     pets = cursor.fetchall()
 
     return jsonify(pets)
