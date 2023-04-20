@@ -725,11 +725,11 @@ def delete_pet():
 
 @app.route("/get_pet_by_x", methods=['POST'])
 def get_pet_by_x():
-    cursor = mysql.connection.cursor()
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     attribute = request.json['attribute']
     pet_attribute = request.json['pet_attribute']
-    cursor.execute('SELECT * FROM Pets WHERE %s = %s',
-                   (attribute, pet_attribute))
-    pets = cursor.fetchall(MySQLdb.cursors.DictCursor)
+    querey = 'Select * FROM Pets WHERE ' + attribute +' = %s'
+    cursor.execute(querey,(pet_attribute,))
+    pets = cursor.fetchall()
 
     return jsonify(pets)
