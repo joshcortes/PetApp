@@ -665,3 +665,16 @@ def get_all_products():
     products = cursor.fetchall()
 
     return jsonify(products)
+
+@app.route("/delete_pet")
+def delete_pet():
+    cursor = mysql.connection.cursor()
+    pet_id = request.json['pet_id']
+    cursor.execute('DELETE FROM Pets WHERE pet_id = %s',
+                   (pet_id,))
+    mysql.connection.commit()
+    cursor.close()
+    
+    return "Successfully deleted user!"
+
+    
