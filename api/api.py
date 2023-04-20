@@ -663,7 +663,7 @@ def get_pet_symptom_condition():
 def get_all_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute("""SELECT * FROM Locations""")
+    cursor.execute("""SELECT * FROM Locations where loc_id < 9005""")
 
     locations = cursor.fetchall()
 
