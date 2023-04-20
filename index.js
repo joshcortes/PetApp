@@ -1,5 +1,5 @@
 let locations = [];
-let productResult = [];
+let productLocationResult = [];
 // let options = document.getElementById('products');
 (async () => {
   const productResponse = await fetch(
@@ -38,8 +38,10 @@ findProductBtn.addEventListener('click', async () => {
         body: JSON.stringify(product), // body data type must match "Content-Type" header
       }
     );
-    const result = await response.json();
-    console.log(result);
+    const productLocationResult = await response.json();
+    console.log(productLocationResult);
+    initMap(productLocationResult);
+    console.log('Map Initialized!');
   } catch (error) {
     document.getElementById(
       'errorMsg'
