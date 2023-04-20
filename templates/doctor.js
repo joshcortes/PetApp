@@ -378,12 +378,17 @@ function searchPet() {
         }
       );
       const searchResult = await searchResponse.json();
-
-      searchResult.forEach((pet) => {
-        document.getElementById(
-          'searchPet'
-        ).innerHTML += `<h2>${pet.pet_id} ${pet.name} ${pet.age} ${pet.sex} ${pet.insurance}</h2>`;
-      });
+      console.log(searchResult);
+      let searchResults = document.getElementById('searchResults');
+      let output = '';
+      if (searchResult.result == 'No pets found') {
+        output += '<h3 class="errorMsg">No pets found</h3>';
+      } else {
+        searchResult.forEach((pet) => {
+          output += `<h2>ID: ${pet.pet_id} Name: ${pet.name} Age: ${pet.age} Sex: ${pet.sex} Insurance: ${pet.insurance}</h2>`;
+        });
+      }
+      searchResults.innerHTML = output;
     } catch (error) {
       document.getElementById(
         'errorMsg'

@@ -112,3 +112,7 @@ th {
 #map span {
   font-size: 12px;
 }
+
+.errorMsg {
+  color: red;
+}

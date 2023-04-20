@@ -739,5 +739,8 @@ def get_pet_by_x():
     querey = "Select * FROM Pets WHERE " + attribute + " = %s"
     cursor.execute(querey, (pet_attribute,))
     pets = cursor.fetchall()
+    print(pets)
+    if pets == ():
+        return {"result": "No pets found"}
 
     return jsonify(pets)
