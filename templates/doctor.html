@@ -22,7 +22,7 @@
       </nav>
     </header>
 
-    <h6 class="errorMsg"></h6>
+    <h6 class="errorMsg" id="errorMsg"></h6>
     <article id="pageContents">
       <div id="loginForm">
         <h1>Doctor Login</h1>
@@ -52,16 +52,37 @@
           <button id="login-btn">Login</button>
         </div>
         <!-- </form> -->
-
-        <div class="login-register">
-          <span>
-            Haven't registered? <a href="./register.html">Register</a></span
-          >
-        </div>
       </div>
     </article>
 
     <section id="patients"></section>
+    <div id="searchPet" style="display:none">
+      <div id="searchPetInputs">
+        <h1>Search Pets</h1>
+        <p>Select an attribute to search by and the search value</p>
+        <div class="class-field">
+          <label for="attribute">Attribute</label>
+          <select id="attribute" required>
+            <option value="name">Name</option>
+            <option value="age">Age</option>
+            <option value="sex">Sex</option>
+            <option value="insurance">Insurance</option>
+          </select>
+        </div>
+        <div class="class-field">
+          <label for="searchValue">Search By</label>
+          <input
+            id="searchValue"
+            type="text"
+            placeholder="Search..."
+            required
+          />
+        </div>
+        <div class="field-btn">
+          <button id="search-btn">Search</button>
+        </div>
+      </div>
+    </div>
     <div id="addPet"></div>
 
     <script src="doctor.js"></script>

@@ -248,6 +248,10 @@ loginBtn.addEventListener('click', async () => {
     options.innerHTML = breedOptions;
 
     addPet();
+
+    document.getElementById('searchPet').style.display = "block";
+
+    searchPet();    
   } catch (error) {
     document.getElementsByClassName(
       'errorMsg'
@@ -360,5 +364,38 @@ function updateForm(consym_id, pet_id, form_id) {
   backBtn.addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById(form_id).innerHTML = originalContent;
+  });
+}
+
+function searchPet(){
+  document.getElementById('search-btn').addEventListener('click', async () => {
+    let attribute = document.getElementById('attribute').value;
+    let searchValue = document.getElementById('searchValue').value;
+    const searchData = {
+      attribute: attribute,
+      pet_attribute: searchValue,
+    };
+    console.log(searchData);
+    try {
+      const searchResponse = await fetch((url = 'http://localhost:5000/get_pet_by_x'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+        body: JSON.stringify(searchData), // body data type must match "Content-Type" header
+      });
+      const searchResult = await searchResponse.json();
+      console.log(searchResult);
+
+      searchResult.forEach((pet) => {
+        document.getElementById('searchPet').innerHTML += `<h2>${pet.pet_id} ${pet.name} ${pet.age} ${pet.sex} ${pet.insurance}</h2>`
+      });
+    } catch (error) {
+      document.getElementById(
+        'errorMsg'
+      ).innerHTML = `Download error: ${error.message}`;
+      console.error(`Download error: ${error.message}`);
+    }
   });
 }
