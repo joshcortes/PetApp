@@ -1,17 +1,5 @@
-if(localStorage.getItem('token')){
-    loginForm = document.getElementById('loginForm');
-    //loginForm.style.display = "none";
-    loggedIn = document.getElementById('loggedIn');
-    //loggedIn.style.display = "block";
-}
-else{
-    loginForm = document.getElementById('loginForm');
-    //loginForm.style.display = "block";
-    loggedIn = document.getElementById('loggedIn');
-    //loggedIn.style.display = "none";
-}
-
-loginForm.addEventListener('submit', async () => {
+let loginBtn = document.getElementById('login-btn');
+loginBtn.addEventListener('click', async () => {
     const data = {
       username: document.getElementById('username').value,
       password: document.getElementById('password').value,
