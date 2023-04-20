@@ -9,15 +9,16 @@
   </head>
   <body>
     <header>
-        <nav class="nav-links">
-            <ul>
-              <li><a href="./index.html">PetCare</a></li>
-              <li><a href="./about.html">About Us</a></li>
-              <li><a href="./doctor.html">Doctor</a></li>
-              <li><a href="./owner.html">Pet Owner</a></li>
-              <li><button id="logout-btn">Logout</button></li>
-            </ul>
-            </nav>
+      <nav class="nav-links">
+        <ul>
+          <li><a href="./index.html">PetCare</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./mostLikelyCondition.html">Pet MD</a></li>
+          <li><a href="./doctor.html">Doctor</a></li>
+          <li><a href="./owner.html">Pet Owner</a></li>
+          <li><button id="logout-btn">Logout</button></li>
+        </ul>
+      </nav>
     </header>
 
     <h6 id="errorMsg"></h6>
@@ -25,31 +26,31 @@
       <div id="loginForm">
         <h1>Pet Owner Login</h1>
         <p>Please Enter Username & Password</p>
-          <div class="class-field">
-            <label for="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              placeholder="Enter your Username"
-              required
-            />
-          </div>
-          <div class="class-field">
-            <label for="password">Password</label>
-            <input
-              id="password"
-              type="text"
-              placeholder="Enter your Password"
-              required
-            />
-          </div>
-          <div class="field-btn">
-            <button id="login-btn">Login</button>
-          </div>
+        <div class="class-field">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter your Username"
+            required
+          />
+        </div>
+        <div class="class-field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your Password"
+            required
+          />
+        </div>
+        <div class="field-btn">
+          <button id="login-btn">Login</button>
+        </div>
       </div>
     </article>
-    <section id = "your-pets"></section>
+    <section id="your-pets"></section>
     <script src="owner.js"></script>
     <script src="./Logout.js"></script>
-</body>
+  </body>
 </html>

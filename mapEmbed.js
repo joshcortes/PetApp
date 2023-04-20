@@ -15,7 +15,6 @@ const allLocations = async () => {
     .then((response) => response.json())
     .then((locations) => {
       locations.forEach((location) => {
-        console.log('INSIDE THE LOOP: ' + location);
         let marker = new google.maps.Marker({
           position: { lat: Number(location.lat), lng: Number(location.lng) },
           map: myMap,

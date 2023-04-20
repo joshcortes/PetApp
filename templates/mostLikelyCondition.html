@@ -13,6 +13,7 @@
         <ul>
           <li><a href="./index.html">PetCare</a></li>
           <li><a href="./about.html">About Us</a></li>
+          <li><a href="./mostLikelyCondition.html">Pet MD</a></li>
           <li><a href="./doctor.html">Doctor</a></li>
           <li><a href="./owner.html">Pet Owner</a></li>
           <li><button id="logout-btn">Logout</button></li>
@@ -20,21 +21,22 @@
       </nav>
     </header>
     <h1>
-      Find a list of likely conditions given a pet's symptoms
+      Worried about your pet? Don't fret! Find the symptoms your pet is
+      experiencing below and then search to get a list of possible conditions
+      that might be the culprit. Note: it's important to always double check
+      with your veterinarian.
     </h1>
     <section class="form-input">
       <p>Select up to four symptoms and see conditions they may match!</p>
-        <div>
-            <select name="symptom1" id="symptom1"></select>
-            <select name="symptom2" id="symptom2"></select>
-            <select name="symptom3" id="symptom3"></select>
-            <select name="symptom4" id="symptom4"></select>
-            <button id="findCondition">Find Likely Conditions</button>
-        </div>
+      <div>
+        <select name="symptom1" id="symptom1"></select>
+        <select name="symptom2" id="symptom2"></select>
+        <select name="symptom3" id="symptom3"></select>
+        <select name="symptom4" id="symptom4"></select>
+        <button id="findCondition">Find Likely Conditions</button>
+      </div>
     </section>
-    <h1>
-        Likely Conditions
-    </h1>
+    <h1>Likely Conditions</h1>
     <section id="likelyConditions"></section>
   </body>
   <script src="./mostLikelyCondition.js"></script>

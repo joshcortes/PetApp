@@ -22,19 +22,17 @@ loginBtn.addEventListener('click', async () => {
     username: document.getElementById('username').value,
     password: document.getElementById('password').value,
   };
-  console.log(data);
   try {
     const response = await fetch((url = 'http://localhost:5000/doc_login'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify(data),
     });
     const result = await response.json();
     localStorage.setItem('token', result.access_token);
     localStorage.setItem('user_id', result.doctor_id);
-    console.log(result);
     let output = `<h1>Welcome, Dr. ${result.last_name}</h1><table>
         <tr>
           <td>Email:</td>
@@ -66,7 +64,6 @@ loginBtn.addEventListener('click', async () => {
       body: JSON.stringify(doctorData), // body data type must match "Content-Type" header
     });
     const petResult = await petResponse.json();
-    console.log(petResult);
 
     let pet_ids = { pet_ids: result.pet_ids };
     const pet_response = await fetch(
@@ -103,7 +100,6 @@ loginBtn.addEventListener('click', async () => {
         let form_id = `updateForm${current_pet.pet_id}${condition.condition_id}`;
         let formBtnID = `updateFormBtn${current_pet.pet_id}${condition.condition_id}`;
 
-        console.log(form_id);
         if (condition.startDate != null) {
           start_date = condition.startDate.substring(0, 16);
         } else {
@@ -125,7 +121,6 @@ loginBtn.addEventListener('click', async () => {
           form_id,
           formBtnID
         );
-        console.log(condition.condition_id);
         onClickHandlers.push({
           id: formBtnID,
           func: () => {
@@ -166,7 +161,6 @@ loginBtn.addEventListener('click', async () => {
       }
     }
     document.getElementById('patients').innerHTML = petList;
-    console.log(onClickHandlers);
     for (let onClickHandler of onClickHandlers) {
       const button = document.getElementById(onClickHandler.id);
       button.addEventListener('click', onClickHandler.func);
@@ -237,7 +231,6 @@ loginBtn.addEventListener('click', async () => {
       }
     );
     const breedResult = await breedResponse.json();
-    console.log(breedResult);
     let breedOptions = '';
     breedResult.forEach((breed) => {
       breedOptions += `<option value="${breed.breed_id}">${breed.name}</option>`;
@@ -247,12 +240,12 @@ loginBtn.addEventListener('click', async () => {
 
     addPet();
 
-    document.getElementById('searchPet').style.display = "block";
+    document.getElementById('searchPet').style.display = 'block';
 
-    searchPet(); 
+    searchPet();
 
-    document.getElementById('deletePet').style.display = "block";
-    
+    document.getElementById('deletePet').style.display = 'block';
+
     deletePet();
   } catch (error) {
     document.getElementsByClassName(
@@ -277,7 +270,6 @@ function addPet() {
       insurance: insurance,
       breed_id: breed,
     };
-    console.log(data);
     try {
       const response = await fetch((url = 'http://localhost:5000/add_pet'), {
         method: 'POST',
@@ -288,7 +280,6 @@ function addPet() {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
       });
       const result = await response.json();
-      console.log(result);
     } catch (error) {
       document.getElementById(
         'errorMsg'
@@ -299,8 +290,6 @@ function addPet() {
 }
 
 function updateForm(consym_id, pet_id, form_id) {
-  console.log(form_id);
-  console.log(consym_id, pet_id);
   const originalContent = document.getElementById(form_id).innerHTML;
   document.getElementById(form_id).innerHTML = `
   <form class=docDataEntry id="condUpdate" onsubmit= >
@@ -330,7 +319,6 @@ function updateForm(consym_id, pet_id, form_id) {
         <button type="button" id="back-btn">Back</button>
       </div>
   </form>`;
-  console.log(consym_id, pet_id);
   const condUpdate = document.getElementById('condUpdate');
   let backendurl = '';
   if (consym_id >= 6000) {
@@ -347,7 +335,6 @@ function updateForm(consym_id, pet_id, form_id) {
       condition_id: consym_id,
       pet_id: pet_id,
     };
-    console.log(updateData);
     try {
       fetch((url = backendurl), {
         method: 'POST',
@@ -370,7 +357,7 @@ function updateForm(consym_id, pet_id, form_id) {
   });
 }
 
-function searchPet(){
+function searchPet() {
   document.getElementById('search-btn').addEventListener('click', async () => {
     let attribute = document.getElementById('attribute').value;
     let searchValue = document.getElementById('searchValue').value;
@@ -378,21 +365,24 @@ function searchPet(){
       attribute: attribute,
       pet_attribute: searchValue,
     };
-    console.log(searchData);
     try {
-      const searchResponse = await fetch((url = 'http://localhost:5000/get_pet_by_x'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-        body: JSON.stringify(searchData), // body data type must match "Content-Type" header
-      });
+      const searchResponse = await fetch(
+        (url = 'http://localhost:5000/get_pet_by_x'),
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+          body: JSON.stringify(searchData), // body data type must match "Content-Type" header
+        }
+      );
       const searchResult = await searchResponse.json();
-      console.log(searchResult);
 
       searchResult.forEach((pet) => {
-        document.getElementById('searchPet').innerHTML += `<h2>${pet.pet_id} ${pet.name} ${pet.age} ${pet.sex} ${pet.insurance}</h2>`
+        document.getElementById(
+          'searchPet'
+        ).innerHTML += `<h2>${pet.pet_id} ${pet.name} ${pet.age} ${pet.sex} ${pet.insurance}</h2>`;
       });
     } catch (error) {
       document.getElementById(
@@ -403,22 +393,24 @@ function searchPet(){
   });
 }
 
-function deletePet(){
+function deletePet() {
   document.getElementById('delete-btn').addEventListener('click', async () => {
     let petID = document.getElementById('petID').value;
     const deleteData = {
       pet_id: petID,
     };
-    console.log(deleteData);
     try {
-      const deleteResponse = await fetch((url = 'http://localhost:5000/delete_pet'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-        body: JSON.stringify(deleteData), // body data type must match "Content-Type" header
-      });
+      const deleteResponse = await fetch(
+        (url = 'http://localhost:5000/delete_pet'),
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+          body: JSON.stringify(deleteData), // body data type must match "Content-Type" header
+        }
+      );
       const deleteResult = await deleteResponse.json();
       console.log(deleteResult);
     } catch (error) {
