@@ -86,17 +86,29 @@ h3 span {
 .form-input {
   background-color: rgba(0, 0, 0, 0.5);
 }
-#products {
+#productsList {
   width: 30%;
 }
 .docDataEntry {
   font-size: 24px;
 }
-#likelyConditions{
+
+#likelyConditions {
   text-align: center;
 }
 
-td, tr, th{
+td,
+tr,
+th {
   font-size: 75%;
   width: fit-content;
+}
+
+#map h3 {
+  font-size: 16px;
+  background-color: unset;
+}
+#map p,
+#map span {
+  font-size: 12px;
 }
