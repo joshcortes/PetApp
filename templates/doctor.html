@@ -84,6 +84,25 @@
       </div>
     </div>
     <div id="addPet"></div>
+    <div id="deletePet" style="display:none">
+      <div id="deletePetInputs">
+        <h1>Delete a Pet</h1>
+        <p>Enter a pet's id (which you can find using the search function) to delete the pet from the database.</p>
+        <p>CAUTION: this cannot be undone.</p>
+        <div class="class-field">
+          <label for="petID">Pet ID</label>
+          <input
+            id="petID"
+            type="text"
+            placeholder="Enter the ID of the pet to delete"
+            required
+          />
+        </div>
+        <div class="field-btn">
+          <button id="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
 
     <script src="doctor.js"></script>
     <script src="Logout.js"></script>
