@@ -530,16 +530,19 @@ def get_likely_condition():
 
     data = cursor.fetchall()
     print(data)
+
     condition_data = []
+
     for row in data:
         condition_data_row = {
-            "id": row["id"],
-            "name": row["name"],
-            "symptoms_number": row["MatchingSymptomsNumber"],
+            "id": row[0],
+            "name": row[1],
+            "symptoms_number": row[2],
         }
         condition_data.append(condition_data_row)
-    
+
     return condition_data
+
 
 @app.route("/get_symptoms", methods=["GET"])
 def get_symptoms():
@@ -555,6 +558,7 @@ def get_symptoms():
     data = cursor.fetchall()
 
     return jsonify(data)
+
 
 @app.route("/search_by_x", methods=["POST"])
 @jwt_required()
