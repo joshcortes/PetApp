@@ -509,9 +509,9 @@ def get_likely_condition():
     condition_data = []
     for row in data:
         condition_data_row = {
-            "id": row["id"],
-            "name": row["name"],
-            "symptoms_number": row["MatchingSymptomsNumber"],
+            "id": row[0],
+            "name": row[1],
+            "symptoms_number": row[2],
         }
         condition_data.append(condition_data_row)
     
