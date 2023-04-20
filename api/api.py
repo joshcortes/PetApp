@@ -540,7 +540,9 @@ def get_likely_condition():
 
     data = cursor.fetchall()
     print(data)
+
     condition_data = []
+
     for row in data:
         condition_data_row = {
             "id": row[0],
@@ -548,8 +550,9 @@ def get_likely_condition():
             "symptoms_number": row[2],
         }
         condition_data.append(condition_data_row)
-    
+
     return condition_data
+
 
 @app.route("/get_symptoms", methods=["GET"])
 def get_symptoms():
@@ -565,6 +568,7 @@ def get_symptoms():
     data = cursor.fetchall()
 
     return jsonify(data)
+
 
 @app.route("/search_by_x", methods=["POST"])
 @jwt_required()
@@ -635,22 +639,21 @@ def get_product_condition():
 
 
 @app.route("/get_product_locations", methods=["GET", "POST"])
-@jwt_required()
 def get_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     product_id = request.json["product_id"]
 
     cursor.execute(
-        """SELECT loc_id, address, name 
+        """SELECT L.loc_id, L.address, L.name, L.lat, L.lng 
                         FROM Locations L, Product_Location P 
                         WHERE L.loc_id = P.loc_id AND P.product_id = %s""",
-        (product_id),
+        (product_id,),
     )
 
     data = cursor.fetchall()
 
-    return data
+    return jsonify(data)
 
 
 @app.route("/get_pet_symptom_condition", methods=["POST"])
@@ -698,7 +701,7 @@ def get_pet_symptom_condition():
 def get_all_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
-    cursor.execute("""SELECT * FROM Locations where loc_id < 9005""")
+    cursor.execute("""SELECT * FROM Locations""")
 
     locations = cursor.fetchall()
 
@@ -714,6 +717,7 @@ def get_all_products():
     products = cursor.fetchall()
 
     return jsonify(products)
+
 
 @app.route("/delete_pet", methods=["POST"])
 def delete_pet():
