@@ -81,6 +81,15 @@ def login_owner():
 
     owner_id = user["owner_id"]
 
+    cursor.execute(
+        """SELECT P.pet_id FROM Pets P, Pet_Owner O 
+                        WHERE P.pet_id = O.pet_id AND O.owner_id = %s""",
+        (owner_id,),
+    )
+    pets = cursor.fetchall()
+
+    pet_ids = [p["pet_id"] for p in pets]
+
     if (user is None) or (user["username"] != username or user["password"] != password):
         return {"msg": "Wrong username or password"}, 401
 
@@ -96,6 +105,7 @@ def login_owner():
         "email": user["email"],
         "phone_number": user["phone_number"],
         "address": user["address"],
+        "pet_ids": pet_ids,
     }
     return response
 
@@ -621,7 +631,7 @@ def get_product_condition():
     return data
 
 
-@app.route("/get_product_locations", methods=["GET"])
+@app.route("/get_product_locations", methods=["GET", "POST"])
 @jwt_required()
 def get_locations():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
