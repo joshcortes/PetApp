@@ -581,9 +581,13 @@ def search_by_x():
     what_to_search_for = request.json["what_to_search_for"]
     specified_search_item = request.json["specified_search_item"]
 
+    print(table)
+    print(what_to_search_for)
+    print(specified_search_item)
+    query = "SELECT * FROM " + table + " WHERE " + what_to_search_for + " = %s"
     cursor.execute(
-        "SELECT * FROM %s WHERE %s = %s",
-        (table, what_to_search_for, specified_search_item),
+        query,
+        (specified_search_item),
     )
 
     cursor.connection.commit()
@@ -591,8 +595,7 @@ def search_by_x():
 
     data = cursor.fetchall()
 
-    return data
-
+    return jsonify(data)
 
 @app.route("/get_breeds", methods=["GET"])
 @jwt_required()
