@@ -13,11 +13,9 @@
         <ul>
           <li><a href="./index.html">PetCare</a></li>
           <li><a href="./about.html">About Us</a></li>
-          <li><a href="./login.html">Login</a></li>
-          <li><a href="./register.html">Register</a></li>
           <li><a href="./doctor.html">Doctor</a></li>
-          <li><a href="./owner.html">Owner</a></li>
-          <button id="logout-btn">Logout</button>
+          <li><a href="./owner.html">Pet Owner</a></li>
+          <li><button id="logout-btn">Logout</button></li>
         </ul>
       </nav>
     </header>
@@ -26,13 +24,13 @@
     </h1>
     <section class="form-input">
       <p>Select up to four symptoms and see conditions they may match!</p>
-        <form id="symptoms" action="#">
+        <div>
             <select name="symptom1" id="symptom1"></select>
             <select name="symptom2" id="symptom2"></select>
             <select name="symptom3" id="symptom3"></select>
             <select name="symptom4" id="symptom4"></select>
-            <input type="submit" value="Find Likely Conditions">
-        </form>
+            <button id="findCondition">Find Likely Conditions</button>
+        </div>
     </section>
     <h1>
         Likely Conditions

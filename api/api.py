@@ -81,6 +81,15 @@ def login_owner():
 
     owner_id = user["owner_id"]
 
+    cursor.execute(
+        """SELECT P.pet_id FROM Pets P, Pet_Owner O 
+                        WHERE P.pet_id = O.pet_id AND O.owner_id = %s""",
+        (owner_id,),
+    )
+    pets = cursor.fetchall()
+
+    pet_ids = [p["pet_id"] for p in pets]
+
     if (user is None) or (user["username"] != username or user["password"] != password):
         return {"msg": "Wrong username or password"}, 401
 
@@ -96,6 +105,7 @@ def login_owner():
         "email": user["email"],
         "phone_number": user["phone_number"],
         "address": user["address"],
+        "pet_ids": pet_ids,
     }
     return response
 
@@ -575,9 +585,13 @@ def search_by_x():
     what_to_search_for = request.json["what_to_search_for"]
     specified_search_item = request.json["specified_search_item"]
 
+    print(table)
+    print(what_to_search_for)
+    print(specified_search_item)
+    query = "SELECT * FROM " + table + " WHERE " + what_to_search_for + " = %s"
     cursor.execute(
-        "SELECT * FROM %s WHERE %s = %s",
-        (table, what_to_search_for, specified_search_item),
+        query,
+        (specified_search_item),
     )
 
     cursor.connection.commit()
@@ -585,8 +599,7 @@ def search_by_x():
 
     data = cursor.fetchall()
 
-    return data
-
+    return jsonify(data)
 
 @app.route("/get_breeds", methods=["GET"])
 @jwt_required()
@@ -709,21 +722,21 @@ def get_all_products():
 @app.route("/delete_pet", methods=["POST"])
 def delete_pet():
     cursor = mysql.connection.cursor()
-    pet_id = request.json["pet_id"]
-    cursor.execute("DELETE FROM Pets WHERE pet_id = %s", (pet_id,))
+    pet_id = request.json['pet_id']
+    cursor.execute('DELETE FROM Pets WHERE pet_id = %s',
+                   (pet_id,))
     mysql.connection.commit()
     cursor.close()
 
-    return "Successfully deleted user!"
+    return jsonify("Successfully deleted pet!")
 
-
-@app.route("/get_pet_by_x", methods=["POST"])
+@app.route("/get_pet_by_x", methods=['POST'])
 def get_pet_by_x():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    attribute = request.json["attribute"]
-    pet_attribute = request.json["pet_attribute"]
-    querey = "Select * FROM Pets WHERE " + attribute + " = %s"
-    cursor.execute(querey, (pet_attribute,))
+    attribute = request.json['attribute']
+    pet_attribute = request.json['pet_attribute']
+    querey = 'Select * FROM Pets WHERE ' + attribute +' = %s'
+    cursor.execute(querey,(pet_attribute,))
     pets = cursor.fetchall()
 
     return jsonify(pets)

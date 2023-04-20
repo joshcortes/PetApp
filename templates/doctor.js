@@ -175,7 +175,6 @@ loginBtn.addEventListener('click', async () => {
     document.getElementById('addPet').innerHTML = `
     <div class="form-input">
     <h1>Add a Pet</h1>
-    <form action="#" id="addPetForm">
       <div class="class-field">
         <label for="petname">Name</label>
         <input
@@ -222,9 +221,8 @@ loginBtn.addEventListener('click', async () => {
         </select>
       </div>
       <div class="field-btn">
-        <input type="submit" id="addPet-btn" value="add" />
+        <button id="addPet-btn">Add Pet</button>
       </div>
-    </form>
   </div>`;
 
     let options = document.getElementById('breed');
@@ -248,6 +246,14 @@ loginBtn.addEventListener('click', async () => {
     options.innerHTML = breedOptions;
 
     addPet();
+
+    document.getElementById('searchPet').style.display = "block";
+
+    searchPet(); 
+
+    document.getElementById('deletePet').style.display = "block";
+    
+    deletePet();
   } catch (error) {
     document.getElementsByClassName(
       'errorMsg'
@@ -257,7 +263,8 @@ loginBtn.addEventListener('click', async () => {
 });
 
 function addPet() {
-  addPetForm.addEventListener('submit', async () => {
+  let addPetBtn = document.getElementById('addPet-btn');
+  addPetBtn.addEventListener('click', async () => {
     let name = document.getElementById('petname').value;
     let age = document.getElementById('age').value;
     let sex = document.getElementById('sex').value;
@@ -360,5 +367,65 @@ function updateForm(consym_id, pet_id, form_id) {
   backBtn.addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById(form_id).innerHTML = originalContent;
+  });
+}
+
+function searchPet(){
+  document.getElementById('search-btn').addEventListener('click', async () => {
+    let attribute = document.getElementById('attribute').value;
+    let searchValue = document.getElementById('searchValue').value;
+    const searchData = {
+      attribute: attribute,
+      pet_attribute: searchValue,
+    };
+    console.log(searchData);
+    try {
+      const searchResponse = await fetch((url = 'http://localhost:5000/get_pet_by_x'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+        body: JSON.stringify(searchData), // body data type must match "Content-Type" header
+      });
+      const searchResult = await searchResponse.json();
+      console.log(searchResult);
+
+      searchResult.forEach((pet) => {
+        document.getElementById('searchPet').innerHTML += `<h2>${pet.pet_id} ${pet.name} ${pet.age} ${pet.sex} ${pet.insurance}</h2>`
+      });
+    } catch (error) {
+      document.getElementById(
+        'errorMsg'
+      ).innerHTML = `Download error: ${error.message}`;
+      console.error(`Download error: ${error.message}`);
+    }
+  });
+}
+
+function deletePet(){
+  document.getElementById('delete-btn').addEventListener('click', async () => {
+    let petID = document.getElementById('petID').value;
+    const deleteData = {
+      pet_id: petID,
+    };
+    console.log(deleteData);
+    try {
+      const deleteResponse = await fetch((url = 'http://localhost:5000/delete_pet'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+        body: JSON.stringify(deleteData), // body data type must match "Content-Type" header
+      });
+      const deleteResult = await deleteResponse.json();
+      console.log(deleteResult);
+    } catch (error) {
+      document.getElementById(
+        'errorMsg'
+      ).innerHTML = `Download error: ${error.message}`;
+      console.error(`Download error: ${error.message}`);
+    }
   });
 }
