@@ -246,7 +246,7 @@ def add_pet_condition():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully added condition to db!"
+    return jsonify("Successfully added condition to db!")
 
 
 @app.route("/add_pet_symptom", methods=["POST"])
@@ -296,7 +296,7 @@ def update_condition():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully updated the condition end date!"
+    return jsonify("Successfully updated the condition end date!")
 
 
 @app.route("/remove_pet_conditon", methods=["POST"])
@@ -317,7 +317,7 @@ def remove_pet_conditon():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully removed condition from pet!"
+    return jsonify("Successfully removed condition from pet!")
 
 
 @app.route("/remove_pet_symptom", methods=["POST"])
@@ -338,7 +338,7 @@ def remove_pet_symptom():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully removed symptom from pet!"
+    return jsonify("Successfully removed symptom from pet!")
 
 
 @app.route("/add_pet", methods=["POST"])
@@ -383,7 +383,7 @@ def designate_owner():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully designated owner of pet!"
+    return jsonify("Successfully designated owner of pet!")
 
 
 @app.route("/designate_doctor", methods=["POST"])
@@ -404,7 +404,7 @@ def designate_doctor():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully designated doctor of pet!"
+    return jsonify("Successfully designated doctor of pet!")
 
 
 @app.route("/register_owner", methods=["POST"])
@@ -428,7 +428,7 @@ def register_owner():
     cursor.connection.commit()
     cursor.close()
 
-    return "Successfully added owner!"
+    return jsonify("Successfully added owner!")
 
 
 @app.route("/register_doctor", methods=["POST"])
@@ -468,7 +468,6 @@ def register_doctor():
 # For this route to work, send via fetch a dictionary that looks like this:
 # dict = {'symptoms': symptom_array[]}
 @app.route("/likely_condition", methods=["POST"])
-@jwt_required()
 def get_likely_condition():
     cursor = mysql.connection.cursor()
 
@@ -505,10 +504,33 @@ def get_likely_condition():
         (symptoms[0], symptoms[1], symptoms[2], symptoms[3]),
     )
 
-    response = ""
+    data = cursor.fetchall()
+    print(data)
+    condition_data = []
+    for row in data:
+        condition_data_row = {
+            "id": row["id"],
+            "name": row["name"],
+            "symptoms_number": row["MatchingSymptomsNumber"],
+        }
+        condition_data.append(condition_data_row)
+    
+    return condition_data
 
-    return response
+@app.route("/get_symptoms", methods=["GET"])
+def get_symptoms():
+    """
+    gets all symptoms in alphabetical order
+    """
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
+    cursor.execute(
+        "SELECT * FROM Symptoms ORDER BY name",
+    )
+
+    data = cursor.fetchall()
+
+    return jsonify(data)
 
 @app.route("/search_by_x", methods=["POST"])
 @jwt_required()
