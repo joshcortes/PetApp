@@ -1,25 +1,24 @@
 let loginBtn = document.getElementById('login-btn');
 loginBtn.addEventListener('click', async () => {
-    const data = {
-      username: document.getElementById('username').value,
-      password: document.getElementById('password').value,
-    };
-    //console.log(data);
-    try {
-      const response = await fetch((url = 'http://localhost:5000/owner_login'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-      });
-      const result = await response.json();
-      localStorage.setItem('token', result.access_token);
-      localStorage.setItem('user_id', result.owner_id);
-      console.log(result);
-      let output = `<h1>Welcome, ${result.first_name} ${result.last_name}</h1><table>
+  const data = {
+    username: document.getElementById('username').value,
+    password: document.getElementById('password').value,
+  };
+  //console.log(data);
+  try {
+    const response = await fetch((url = 'http://localhost:5000/owner_login'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    const result = await response.json();
+    localStorage.setItem('token', result.access_token);
+    localStorage.setItem('user_id', result.owner_id);
+    let output = `<h1>Welcome, ${result.first_name} ${result.last_name}</h1><table>
     <tr>
       <td>Email:</td>
       <td>${result.email}</td>
@@ -34,25 +33,23 @@ loginBtn.addEventListener('click', async () => {
     </tr>
   </table>
   <div id='pets'></div>`;
-      document.getElementById('pageContents').innerHTML = output;
-  
-      let ownerData = { user_type: 'owner_id', user_id: result.owner_id };
-      // fetch pet info related to owner with /pet_info
-      const petResponse = await fetch((url = 'http://localhost:5000/pet_info'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(ownerData), // body data type must match "Content-Type" header
-      });
-      const petResult = await petResponse.json();
-      console.log(petResult);
+    document.getElementById('pageContents').innerHTML = output;
 
-      // output table of pet info in the HTML DOM
+    let ownerData = { user_type: 'owner_id', user_id: result.owner_id };
+    // fetch pet info related to owner with /pet_info
+    const petResponse = await fetch((url = 'http://localhost:5000/pet_info'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(ownerData), // body data type must match "Content-Type" header
+    });
+    const petResult = await petResponse.json();
+
+    // output table of pet info in the HTML DOM
     let pet_ids = { pet_ids: result.pet_ids };
-    console.log(result.pet_ids)
     const pet_response = await fetch(
       (url = 'http://localhost:5000/get_pet_symptom_condition'),
       {
@@ -100,7 +97,6 @@ loginBtn.addEventListener('click', async () => {
         ${condition.severity} 
         <span>Start: </span>${start_date} 
         <span>End: </span>${end_date}</h3>`;
-        console.log(condition.condition_id);
       }
 
       for (let k = 0; k < pet_symptoms.length; k++) {
@@ -118,7 +114,6 @@ loginBtn.addEventListener('click', async () => {
         } else {
           end_date = 'N/A';
         }
-        console.log(start_date);
         petList += `<h3><span>Symptom: </span>${symptom.name} 
         ${symptom.severity}
         <span>Start: </span>${start_date} 
@@ -126,12 +121,12 @@ loginBtn.addEventListener('click', async () => {
       }
     }
     //document.getElementById('your-pets').innerHTML = petList;
-      
-      document.getElementById('pets').innerHTML = petList;
-    } catch (error) {
-      document.getElementById(
-        'errorMsg'
-      ).innerHTML = `Download error: ${error.message}`;
-      console.error(`Download error: ${error.message}`);
-    }
-  });
+
+    document.getElementById('pets').innerHTML = petList;
+  } catch (error) {
+    document.getElementById(
+      'errorMsg'
+    ).innerHTML = `Download error: ${error.message}`;
+    console.error(`Download error: ${error.message}`);
+  }
+});
