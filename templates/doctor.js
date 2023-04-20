@@ -1,4 +1,23 @@
-loginForm.addEventListener('submit', async () => {
+const loginBtn = document.getElementById('login-btn');
+
+const generateConditionForm = (
+  description,
+  name,
+  severity,
+  startDate,
+  endDate,
+  formID,
+  formBtnID
+) => {
+  return `<h3 title="${description}">
+        <span>Condition:</span> ${name}, 
+        ${severity} 
+        <span>Start: </span>${startDate} 
+        <span>End: </span>${endDate}<div id="${formID}">
+        <button id=${formBtnID}>Update Condition</button></div></h3>`;
+};
+
+loginBtn.addEventListener('click', async () => {
   const data = {
     username: document.getElementById('username').value,
     password: document.getElementById('password').value,
@@ -67,6 +86,7 @@ loginForm.addEventListener('submit', async () => {
     let pet_ids_arr = pet_ids.pet_ids;
 
     let petList = `<h1>Current Patients</h1>`;
+    let onClickHandlers = [];
 
     for (let i = 0; i < pet_ids_arr.length; i++) {
       let curr_pet_id = pet_ids_arr[i];
@@ -81,6 +101,8 @@ loginForm.addEventListener('submit', async () => {
         let start_date = '';
         let end_date = '';
         let form_id = `updateForm${current_pet.pet_id}${condition.condition_id}`;
+        let formBtnID = `updateFormBtn${current_pet.pet_id}${condition.condition_id}`;
+
         console.log(form_id);
         if (condition.startDate != null) {
           start_date = condition.startDate.substring(0, 16);
@@ -94,14 +116,22 @@ loginForm.addEventListener('submit', async () => {
           end_date = 'N/A';
         }
 
-        petList += `<h3 title="${condition.description}">
-        <span>Condition:</span> ${condition.name}, 
-        ${condition.severity} 
-        <span>Start: </span>${start_date} 
-        <span>End: </span>${end_date}<div id="${form_id}">
-        <button id="end" onclick="updateForm(${condition.condition_id},
-        ${current_pet.pet_id},${form_id})">Update Condition</button></div></h3>`;
+        petList += generateConditionForm(
+          condition.description,
+          condition.name,
+          condition.severity,
+          start_date,
+          end_date,
+          form_id,
+          formBtnID
+        );
         console.log(condition.condition_id);
+        onClickHandlers.push({
+          id: formBtnID,
+          func: () => {
+            updateForm(condition.condition_id, current_pet.pet_id, form_id);
+          },
+        });
       }
 
       for (let k = 0; k < pet_symptoms.length; k++) {
@@ -109,6 +139,7 @@ loginForm.addEventListener('submit', async () => {
         start_date = '';
         end_date = '';
         let form_id = `updateForm${current_pet.pet_id}${symptom.symptom_id}`;
+        let formBtnID = `updateFormBtn${current_pet.pet_id}${symptom.symptom_id}`;
 
         if (symptom.startDate != null) {
           start_date = symptom.startDate.substring(0, 16);
@@ -121,16 +152,25 @@ loginForm.addEventListener('submit', async () => {
         } else {
           end_date = 'N/A';
         }
-        console.log(start_date);
         petList += `<h3><span>Symptom: </span>${symptom.name} 
         ${symptom.severity}
         <span>Start: </span>${start_date} 
         <span>End: </span>${end_date}<div id="${form_id}">
-        <button id="end" onclick="updateForm(${symptom.symptom_id},
-        ${current_pet.pet_id},'${form_id}')">Update Symptom</button></div></h3>`;
+        <button id="${formBtnID}">Update Symptom</button></div></h3>`;
+        onClickHandlers.push({
+          id: formBtnID,
+          func: () => {
+            updateForm(symptom.symptom_id, current_pet.pet_id, form_id);
+          },
+        });
       }
     }
     document.getElementById('patients').innerHTML = petList;
+    console.log(onClickHandlers);
+    for (let onClickHandler of onClickHandlers) {
+      const button = document.getElementById(onClickHandler.id);
+      button.addEventListener('click', onClickHandler.func);
+    }
 
     document.getElementById('addPet').innerHTML = `
     <div class="form-input">
@@ -251,10 +291,11 @@ function addPet() {
   });
 }
 
-function updateForm(consym_id, pet_id, formString) {
-  console.log(formString);
-  const originalContent = document.getElementById(formString).innerHTML;
-  document.getElementById(formString).innerHTML = `
+function updateForm(consym_id, pet_id, form_id) {
+  console.log(form_id);
+  console.log(consym_id, pet_id);
+  const originalContent = document.getElementById(form_id).innerHTML;
+  document.getElementById(form_id).innerHTML = `
   <form class=docDataEntry id="condUpdate" onsubmit= >
     <label for="severity">Severity: </label>
     <select
