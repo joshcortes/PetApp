@@ -724,7 +724,7 @@ def delete_pet():
     mysql.connection.commit()
     cursor.close()
 
-    return "Successfully deleted user!"
+    return jsonify("Successfully deleted pet!")
 
 @app.route("/get_pet_by_x", methods=['POST'])
 def get_pet_by_x():
