@@ -11,17 +11,19 @@ async function initMap() {
     zoom: 12,
   });
 
-  // fetch('http://localhost:5000/get_locations')
-  //   .then((response) => response.json())
-  //   .then((locations) => {
-  //     locations.forEach((location) => {
-  //       let marker = new google.maps.Marker({
-  //         position: { lat: location.lat, lng: location.lng },
-  //         map: myMap,
-  //         title: location.name,
-  //       });
-  //     });
-  //   });
-  marker.setMap(myMap);
+  fetch('http://localhost:5000/get_all_locations')
+    .then((response) => response.json())
+    .then((locations) => {
+      console.log('Hello before loop');
+      locations.forEach((location) => {
+        console.log(location);
+        let marker = new google.maps.Marker({
+          position: { lat: Number(location.lat), lng: Number(location.lng) },
+          map: myMap,
+          title: location.name,
+        });
+        marker.setMap(myMap);
+      });
+    });
 }
 initMap();

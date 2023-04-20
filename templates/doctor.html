@@ -22,34 +22,35 @@
       </nav>
     </header>
 
-    <h6 id="errorMsg"></h6>
+    <h6 class="errorMsg"></h6>
     <article id="pageContents">
       <div id="loginForm">
         <h1>Doctor Login</h1>
         <p>Please Enter Username & Password</p>
-        <form action="#"
-          <div class="class-field">
-            <label for="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              placeholder="Enter your Username"
-              required
-            />
-          </div>
-          <div class="class-field">
-            <label for="password">Password</label>
-            <input
-              id="password"
-              type="text"
-              placeholder="Enter your Password"
-              required
-            />
-          </div>
-          <div class="field-btn">
-            <input type="submit" value="Login" />
-          </div>
-        </form>
+        <!-- <form action="#" -->
+        <div class="class-field">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter your Username"
+            required
+          />
+        </div>
+        <div class="class-field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="text"
+            placeholder="Enter your Password"
+            required
+          />
+        </div>
+        <div class="field-btn">
+          <!-- <input type="submit" value="Login" /> -->
+          <button id="login-btn">Login</button>
+        </div>
+        <!-- </form> -->
         <div class="login-register">
           <span>
             Haven't registered? <a href="./register.html">Register</a></span
@@ -57,11 +58,8 @@
         </div>
       </div>
     </article>
-    <section id="patients">
-    </section>
-    <div id="addPet">
-    </div>
-    
+    <section id="patients"></section>
+    <div id="addPet"></div>
 
     <script src="doctor.js"></script>
     <script src="Logout.js"></script>
