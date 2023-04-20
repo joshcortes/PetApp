@@ -14,9 +14,7 @@ async function initMap() {
   fetch('http://localhost:5000/get_all_locations')
     .then((response) => response.json())
     .then((locations) => {
-      console.log('Hello before loop');
       locations.forEach((location) => {
-        console.log(location);
         let marker = new google.maps.Marker({
           position: { lat: Number(location.lat), lng: Number(location.lng) },
           map: myMap,

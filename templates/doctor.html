@@ -14,6 +14,7 @@
         <ul>
           <li><a href="./index.html">PetCare</a></li>
           <li><a href="./about.html">About Us</a></li>
+          <li><a href="./mostLikelyCondition.html">Pet MD</a></li>
           <li><a href="./doctor.html">Doctor</a></li>
           <li><a href="./owner.html">Pet Owner</a></li>
           <li><button id="logout-btn">Logout</button></li>
@@ -55,7 +56,7 @@
     </article>
 
     <section id="patients"></section>
-    <div id="searchPet" style="display:none">
+    <div id="searchPet" style="display: none">
       <div id="searchPetInputs">
         <h1>Search Pets</h1>
         <p>Select an attribute to search by and the search value</p>
@@ -83,10 +84,13 @@
       </div>
     </div>
     <div id="addPet"></div>
-    <div id="deletePet" style="display:none">
+    <div id="deletePet" style="display: none">
       <div id="deletePetInputs">
         <h1>Delete a Pet</h1>
-        <p>Enter a pet's id (which you can find using the search function) to delete the pet from the database.</p>
+        <p>
+          Enter a pet's id (which you can find using the search function) to
+          delete the pet from the database.
+        </p>
         <p>CAUTION: this cannot be undone.</p>
         <div class="class-field">
           <label for="petID">Pet ID</label>

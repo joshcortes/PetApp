@@ -13,7 +13,6 @@ let productResult = [];
     }
   );
   productResult = await productResponse.json();
-  console.log(productResult);
   let productOptions = '';
   productResult.forEach((product) => {
     productOptions += `<option value="${product.product_id}">${product.name}</option>`;
