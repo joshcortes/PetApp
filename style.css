@@ -103,3 +103,12 @@ th {
   font-size: 75%;
   width: fit-content;
 }
+
+#map h3 {
+  font-size: 16px;
+  background-color: unset;
+}
+#map p,
+#map span {
+  font-size: 12px;
+}

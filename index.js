@@ -16,14 +16,24 @@ let productLocationResult = [];
   console.log(productResult);
   let productOptions = '';
   productResult.forEach((product) => {
-    productOptions += `<option value="${product.product_id}">${product.name}</option>`;
+    productOptions += `<option id="${product.product_id}"value="${product.product_id}">${product.name}</option>`;
   });
   document.getElementById('productsList').innerHTML = productOptions;
 })();
 
+const setMapTitle = (product) => {
+  document.getElementById(
+    'mapTitle'
+  ).innerHTML = `Showing locations that have : ${product.name}`;
+};
+
 const findProductBtn = document.getElementById('findProductBtn');
 findProductBtn.addEventListener('click', async () => {
-  const product = { product_id: document.getElementById('productsList').value };
+  const product = {
+    product_id: document.getElementById('productsList').value,
+    name: document.getElementById(document.getElementById('productsList').value)
+      .innerHTML,
+  };
   console.log(product);
 
   try {
@@ -41,7 +51,7 @@ findProductBtn.addEventListener('click', async () => {
     const productLocationResult = await response.json();
     console.log(productLocationResult);
     initMap(productLocationResult);
-    console.log('Map Initialized!');
+    setMapTitle(product);
   } catch (error) {
     document.getElementById(
       'errorMsg'

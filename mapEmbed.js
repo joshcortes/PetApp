@@ -2,7 +2,14 @@
 //   const response = await fetch('http://localhost:5000/get_locations');
 //   locations = await response.json();
 // };
-
+function addMarkerClickListener(marker, location) {
+  marker.addListener('click', () => {
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<h3>${location.name}</h3><p>${location.address}</p>`,
+    });
+    infoWindow.open(myMap, marker);
+  });
+}
 const allLocations = async () => {
   fetch('http://localhost:5000/get_all_locations')
     .then((response) => response.json())
@@ -15,6 +22,7 @@ const allLocations = async () => {
           title: location.name,
         });
         marker.setMap(myMap);
+        addMarkerClickListener(marker, location);
       });
     });
 };
@@ -34,8 +42,8 @@ async function initMap(productLocationResult) {
       map: myMap,
       title: location.name,
     });
-    console.log(location);
     marker.setMap(myMap);
+    addMarkerClickListener(marker, location);
   });
 }
 initMap();
