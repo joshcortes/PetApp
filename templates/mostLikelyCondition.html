@@ -22,22 +22,22 @@
       </nav>
     </header>
     <h1>
-      Create an Account today & Search for daily Products that will help your
-      Pets!
+      Find a list of likely conditions given a pet's symptoms
     </h1>
     <section class="form-input">
-      <p>Search for Products before you make Your commute!</p>
-      <select name="products" id="products"></select>
+      <p>Select up to four symptoms and see conditions they may match!</p>
+        <form id="symptoms" action="#">
+            <select name="symptom1" id="symptom1"></select>
+            <select name="symptom2" id="symptom2"></select>
+            <select name="symptom3" id="symptom3"></select>
+            <select name="symptom4" id="symptom4"></select>
+            <input type="submit" value="Find Likely Conditions">
+        </form>
     </section>
-    <div id="map"></div>
-
-    <script src="../index.js"></script>
-    <script src="../mapEmbed.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"
-    ></script>
+    <h1>
+        Likely Conditions
+    </h1>
+    <section id="likelyConditions"></section>
   </body>
-  <script src="./Logout.js"></script>
+  <script src="./mostLikelyCondition.js"></script>
 </html>
